@@ -23,7 +23,7 @@ class Write extends React.Component{
                     <div className="write-action">
                         <h2>게시글 작성</h2>
                         <h4>*게시물은 등록된 사용자만이 작성할 수 있습니다.*</h4>
-                        <form method="POST" action="http://localhost:3002/createFreeboard">
+                        <form method="POST" action="http://localhost:3002/Createboard">
                             <label className="userid"><strong>ID</strong></label>
                             <input type="text" placeholder="아이디" name="userid" required/>
                             <p/>
