@@ -1,0 +1,29 @@
+.freeboard-btn,.find-btn,.protect-btn{
+    text-decoration: none;
+    font-size: larger;
+    margin: auto;
+    width: 170px;
+    height: 170px;
+    background-color: rgb(195, 149, 106);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;  
+    text-align: center;
+    line-height: 120px;
+    align-items: center;
+    margin: auto;
+    float:left;
+    display: grid;
+    margin-left: 16rem;
+    margin-top: 8em;
+    margin-bottom: 2rem;
+    
+}
+
+.protect-btn{
+    margin-bottom: 8rem;
+}
+
+.write-action{
+    text-align: center;
+}

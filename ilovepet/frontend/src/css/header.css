@@ -1,0 +1,51 @@
+.header{
+    /*background-color: rgb(191, 177, 152);*/
+    /*background-color: rgb(255,112,126);*/
+    background-color: rgb(173, 149, 106);
+    
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    
+}
+
+.headername{
+    font-size: large;
+    font-weight: 500;
+    padding-left: 150px;
+}
+
+.brandname{
+    font-size: large;
+    font-weight: 500;
+    padding-bottom: 20px;
+    padding-left: 150px;
+}
+
+.brandtitle{
+    color: black;
+    text-decoration: none;
+}
+
+
+.link-freeboard,.link-find,.link-protect{
+    color:white;
+    text-decoration: none;
+    padding-right: 30px;
+    padding-left: 30px;
+
+}
+.dogimg{
+    padding-left: 150px;
+}
+
+.sigin,.link-signup,.link-signin{
+    
+    float: right;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    color: black; 
+    text-decoration: none;
+    
+}
