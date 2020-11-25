@@ -41,6 +41,7 @@ class Write extends React.Component{
                             <p/>
 
                             <input type="submit" value="글쓰기"></input>
+                            
 
 
 

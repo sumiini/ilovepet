@@ -6,7 +6,7 @@ var logger = require('morgan');
 const cors =require('cors');
 var bodyParser = require('body-parser');
 const User = require('./models/user');
-
+const Board =require('./models/board');
 
 const port = 3002;
 
@@ -50,11 +50,27 @@ app.post('/Signup',function(req,res,next){
 
     });
     
-    console.log("**********************"+req.body.usernickname);
     userdb.save((err)=>{
         
         res.redirect('http://localhost:3000');
     })
+
+})
+app.use(bodyParser.urlencoded({extended: true}));
+app.post('/Createboard',function(res,req,next){
+  console.log("!!!!!!!!!!!createFreemoard server");
+  console.log(res.body);
+  const boarddb=new Board({
+    boarduserid:res.body.userid,
+    boarduserpsw:res.body.userpsw,
+    boardtitle:res.body.title,
+    boardcontent:res.body.content
+
+  });
+
+  boarddb.save((err)=>{
+    req.redirect('http://localhost:3000/freeboard');
+  })
 
 })
 
