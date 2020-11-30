@@ -3,6 +3,7 @@ const mongooseAutoInc = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const boardSchema = new Schema({
+    
     boarduserid: {
         type: String,
         required: true,
@@ -20,6 +21,7 @@ const boardSchema = new Schema({
         type: String,
         required: true,
     },
+    
     
 });
 

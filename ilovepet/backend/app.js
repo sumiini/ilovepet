@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 const cors =require('cors');
 var bodyParser = require('body-parser');
+
 const User = require('./models/user');
 const Board =require('./models/board');
+
 
 const port = 3002;
 
@@ -34,6 +37,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//============================================================
 app.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -56,10 +61,13 @@ app.post('/Signup',function(req,res,next){
     })
 
 })
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.post('/Createboard',function(res,req,next){
   console.log("!!!!!!!!!!!createFreemoard server");
   console.log(res.body);
+
+  
   const boarddb=new Board({
     boarduserid:res.body.userid,
     boarduserpsw:res.body.userpsw,
@@ -74,7 +82,25 @@ app.post('/Createboard',function(res,req,next){
 
 })
 
+app.post('/Readboard',function(res,req,next){
+  console.log("!!!!@@@@@@ read board server!!!");
+     Board.find(function(err, board){
+       console.log(board);
+      if(err) return res.status(500).send({error: 'database failure'});
+      res.send(board);
+  })
 
+})
+
+// app.get('/freeboard',function(req,res,next){
+//   Board.find({}).then((board)=>{
+//     res.render('freeboard',{boards:boards});
+//   }).catch((err)=>{
+//     console.log(err);
+//   });
+// });
+
+//============================================================
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
