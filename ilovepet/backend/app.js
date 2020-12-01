@@ -63,32 +63,33 @@ app.post('/Signup',function(req,res,next){
 })
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.post('/Createboard',function(res,req,next){
+app.post('/Createboard',function(req,res,next){
   console.log("!!!!!!!!!!!createFreemoard server");
   console.log(res.body);
 
   
   const boarddb=new Board({
-    boarduserid:res.body.userid,
-    boarduserpsw:res.body.userpsw,
-    boardtitle:res.body.title,
-    boardcontent:res.body.content
+    boarduserid:req.body.userid,
+    boarduserpsw:req.body.userpsw,
+    boardtitle:req.body.title,
+    boardcontent:req.body.content
 
   });
 
   boarddb.save((err)=>{
-    req.redirect('http://localhost:3000/freeboard');
+    res.redirect('http://localhost:3000/freeboard');
   })
 
 })
 
-app.post('/Readboard',function(res,req,next){
+app.post('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
+  
      Board.find(function(err, board){
-       console.log(board);
-      if(err) return res.status(500).send({error: 'database failure'});
-      res.send(board);
-  })
+        console.log(board);
+        if(err) return res.status(500).send({error: 'database failure'});
+        res.send(board);
+      });
 
 })
 
