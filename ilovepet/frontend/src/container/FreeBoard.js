@@ -9,6 +9,7 @@ import Footer from "../component/Footer";
 class FreeBoard extends React.Component{
     
     
+    
     constructor(props){
         super(props);
         this.state={
