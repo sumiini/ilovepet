@@ -65,24 +65,36 @@ app.post('/Signup',function(req,res,next){
 app.use(bodyParser.urlencoded({extended: true}));
 app.post('/Createboard',function(req,res,next){
   console.log("!!!!!!!!!!!createFreemoard server");
-  console.log(res.body);
+
+  User.find(function(err,us){
+    
+  
+    console.log("ususususu"+Object.values(us));
+    if(us.userid===req.body.userid && us.userpassword===req.body.userpsw){
+      const boarddb=new Board({
+        boarduserid:req.body.userid,
+        boarduserpsw:req.body.userpsw,
+        boardtitle:req.body.title,
+        boardcontent:req.body.content
+    
+      });
+      boarddb.save((err)=>{
+        res.redirect('http://localhost:3000/freeboard');
+      })
+    }
+    else{
+      res.status(401).send("존재하지 않는 회원입니다.")
+    }
+  })
 
   
-  const boarddb=new Board({
-    boarduserid:req.body.userid,
-    boarduserpsw:req.body.userpsw,
-    boardtitle:req.body.title,
-    boardcontent:req.body.content
+  
 
-  });
-
-  boarddb.save((err)=>{
-    res.redirect('http://localhost:3000/freeboard');
-  })
+  
 
 })
 
-app.post('/Readboard',function(req,res,next){
+app.get('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
   
      Board.find(function(err, board){
