@@ -1,11 +1,13 @@
 
 var createError = require('http-errors');
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const cors =require('cors');
+
 var bodyParser = require('body-parser');
 
 
@@ -16,6 +18,7 @@ const Board =require('./models/board');
 const port = 3002;
 
 var app = express();
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const mongoose = require('mongoose');
@@ -85,6 +88,7 @@ app.post('/Createboard',function(req,res,next){
           boarduserpsw:req.body.userpsw,
           boardtitle:req.body.title,
           boardcontent:req.body.content
+          
       
         });
         boarddb.save((err)=>{
@@ -96,14 +100,7 @@ app.post('/Createboard',function(req,res,next){
       
     });
   
-    
-    
   })
-
-  
-  
-
-  
 
 })
 
@@ -111,7 +108,7 @@ app.get('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
   
      Board.find(function(err, board){
-        console.log("body"+board.body);
+        //console.log(board);
         if(err) return res.status(500).send({error: 'database failure'});
         res.send(board);
       });
@@ -143,6 +140,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.use(cors());
+
 app.listen(port,()=>console.log(`Listening on port ${port}`));
 module.exports = app;

@@ -7,74 +7,61 @@ import Footer from "../component/Footer";
 
 
 class FreeBoard extends React.Component{
-    
     state={
-        
-        board:[],
+        boards:[],
     };
-    
-    constructor(props){
-        super(props);
-        
-    }
-
-   
-
     loadingData=async()=>{
         try{
             const response = await axios.get('http://localhost:3002/Readboard');
-            
+            console.log("hi");
             this.setState({
-                board:response.data,
+                boards:response.data,
             });
             
-            console.log("res"+response.data);
+            
         }catch(e){
             console.log(e);
         }
     };
+
     componentDidMount() {
          const { loadingData } = this;
+         //loadingData();
          loadingData();
+         
     }
-
-
 
     render(){
         console.log("hihi")
-        const{board}=this.state;
-        console.log(board);
-      
-        //axios.post("http://localhost:3002/Readboard")
-        //.then(({board})=>{this.setState({ title:board.boardtitle,user:board.boarduserid});})
-        //.catch(e=>{console.error(e);});
-        //console.log(this.state.title)
-        
+        const{boards}=this.state;
+        console.log(boards.map(i=>i.boardtitle));
+        var cnt=0;
 
    
-
         return(
             <div>
                 <Header />
                 
                 {
                     <div>
+                        
                         <h1>자유게시판</h1>
                         <div className="freeboard-list">
                             <tr>
+                                <td>No.</td>
                                 <td>제목</td>
-                                <td>날짜</td>
                                 <td>작성자</td>
                             </tr>
-                            <tr>
-                                
-                                <td> <a href="">{board.title}</a></td>
-                                <td> date </td>
-                                <td> {board.user} </td>
-                            </tr>
-                               
                             
-
+                            {boards.map((i,key)=>
+                                <tr>
+                                    <td key={key}>{cnt++}</td>
+                                    <td key={key}><a href="/freeboard">{i.boardtitle}</a></td>
+                                    <td key={key}>{i.boarduserid}</td>
+                                </tr>
+                            
+                            )}
+                            
                         </div>
 
                        <div>
