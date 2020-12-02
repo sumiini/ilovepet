@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 import Header from "../component/Header";
 import Footer from "../component/Footer";
@@ -57,13 +58,8 @@ class BoardContent extends React.Component{
                                     <span key={i._id}>{i.boardtitle}</span>
                                     <span key={i._id}>{i.boardcontent}</span>
                                     <span key={i._id}>{i.boarduserid}</span>
-                                    <form>
-                                        <button >수정하기</button>
-                                    </form>
-                                    <form method="POST" action="http://localhost:3002/Deleteboard">
-                                        <input type="hidden" value={i._id} name="delid"></input>
-                                        <button type="submit">삭제하기</button>
-                                    </form>
+                                   <Link to={`/admin${i._id}`}>수정/삭제</Link>
+                                    
                                     
 
                                 </div>

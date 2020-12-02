@@ -4,10 +4,7 @@ const mongooseAutoInc = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    usernickname: {
-        type: String,
-        required: true,
-    },
+    
     userid: {
         type: String,
         required: true,

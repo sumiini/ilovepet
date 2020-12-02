@@ -54,7 +54,6 @@ app.post('/Signup',function(req,res,next){
   console.log("**************"+req.body);
   
     const userdb= new User({
-        usernickname:req.body.usernickname,
         userid:req.body.userid,
         userpassword:req.body.userpassword
 
@@ -67,6 +66,7 @@ app.post('/Signup',function(req,res,next){
     })
 
 })
+
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -112,17 +112,24 @@ app.get('/Readboard',function(req,res,next){
 
 app.post('/Deleteboard',function(req,res,next){
   console.log(req.body);
-  Board.deleteOne({_id:req.body.delid}).then((result)=>{
-    
-    res.redirect('http://localhost:3000/freeboard');
-  }).catch((err)=>{
-    var response={
-      success:false
-    }
-    res.status(401).json(response);
-  });
+  
+  if(req.body.adminid===req.body.bduserid&&req.body.adminpwd===req.body.bdpwd ){
+    Board.deleteOne({_id:req.body.delid}).then((result)=>{
 
+      res.redirect('http://localhost:3000/freeboard');
+    }).catch((err)=>{
+      var response={
+        success:false
+      }
+      res.status(401).json(response);
+    });
+
+
+  }
+  
 });
+
+
 
 
 //============================================================
