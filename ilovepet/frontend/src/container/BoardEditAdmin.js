@@ -12,7 +12,6 @@ class BoardEditAdmin extends React.Component{
             editboards:[],
         };
     }
-
     loadingData=async()=>{
         try{
             const response = await axios.get('http://localhost:3002/Readboard');
@@ -20,22 +19,15 @@ class BoardEditAdmin extends React.Component{
             this.setState({
                 editboards:response.data,
             });
-            
-            
         }catch(e){
             console.log(e);
         }
     };
-
     componentDidMount() {
          const { loadingData } = this;
          //loadingData();
          loadingData();
-         
     }
-
-
-
     render(){
         let boardEditId = window.location.pathname.replace("/editadmin","");
         console.log(boardEditId);
@@ -45,21 +37,18 @@ class BoardEditAdmin extends React.Component{
         return(
             <div>
                 <Header />
-
-                
                 <div>
                     {editboards.map(i=>
                     
                         {if(i._id===boardEditId){
                             return(
                                 <div>
-                                    
+                                    <label>[ 작성자 ]</label>
+                                    <p/>
                                     <span key={i._id}>{i.boarduserid}</span>
-
                                     <form method="POST" action="http://localhost:3002/Editboard">
                                         <input type="hidden" value={i._id} name="edid"></input>
                                         <h3>--------------------------------------</h3>
-
                                         <label>제목</label>
                                         <input type="text" placeholder={i.boardtitle} name="edittitle"/>
                                         <p/>
@@ -75,7 +64,6 @@ class BoardEditAdmin extends React.Component{
                                         <label>password</label>
                                         <input type="password" name="editpwd"></input>
                                         <p/>
-
                                         <input type="hidden" value={i.boardtitle} name="beforetitle"/>
                                         <input type="hidden" value={i.boardcontent} name="beforecontent"/>
 
@@ -83,24 +71,11 @@ class BoardEditAdmin extends React.Component{
                                         <input type="hidden" value={i.boarduserpsw} name="bdpwd"></input>
                                         <button type="submit">수정하기</button>
                                     </form>
-                                
-                                    
-                                    
-                                   
-
                                 </div>
-
                             )
-                             
                         }}
-                    
-                           
-                        
                     )}
-                    
                 </div>
-                   
-                
                 <Footer />
             </div>
         )

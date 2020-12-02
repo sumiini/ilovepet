@@ -12,7 +12,6 @@ class BoardDelAdmin extends React.Component{
             adminboards:[],
         };
     }
-
     loadingData=async()=>{
         try{
             const response = await axios.get('http://localhost:3002/Readboard');
@@ -20,41 +19,28 @@ class BoardDelAdmin extends React.Component{
             this.setState({
                 adminboards:response.data,
             });
-            
-            
         }catch(e){
             console.log(e);
         }
     };
-
     componentDidMount() {
          const { loadingData } = this;
          //loadingData();
          loadingData();
-         
     }
-
-
-
     render(){
         let boardAdminId = window.location.pathname.replace("/deladmin","");
         console.log(boardAdminId);
         const{adminboards}=this.state;
         console.log(adminboards.map(i=>i.boardtitle));
-
         return(
             <div>
                 <Header />
-
-                
                 <div>
                     {adminboards.map(i=>
-                    
                         {if(i._id===boardAdminId){
                             return(
                                 <div>
-                                
-
                                     <label>[ 제목 ]</label>
                                     <p/>
                                     <span key={i._id}>{i.boardtitle}</span>
@@ -82,21 +68,11 @@ class BoardDelAdmin extends React.Component{
                                         <input type="hidden" value={i.boarduserpsw} name="bdpwd"></input>
                                         <button type="submit">삭제하기</button>
                                     </form>
-                                
-
                                 </div>
-
                             )
-                             
                         }}
-                    
-                           
-                        
                     )}
-                    
                 </div>
-                   
-                
                 <Footer />
             </div>
         )
