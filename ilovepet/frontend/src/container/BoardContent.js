@@ -52,16 +52,14 @@ class BoardContent extends React.Component{
                         {if(i._id===boardId){
                             return(
                                 <div>
-                                    
-
-                                    
+                                   
                                     <span key={i._id}>{i.boardtitle}</span>
                                     <span key={i._id}>{i.boardcontent}</span>
                                     <span key={i._id}>{i.boarduserid}</span>
-                                   <Link to={`/admin${i._id}`}>수정/삭제</Link>
+                                   <Link to={`/deladmin${i._id}`}>삭제</Link>
+                                   <br/>
+                                   <Link to={`/editadmin${i._id}`}>수정</Link>
                                     
-                                    
-
                                 </div>
 
                             )
