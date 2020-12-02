@@ -1,15 +1,21 @@
 import React from "react";
 import axios from 'axios';
-
+import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
+import BoardContent from './BoardContent';
 
 
 
 class FreeBoard extends React.Component{
-    state={
-        boards:[],
-    };
+    constructor(props){
+        super(props);
+        this.state={
+            boards:[],
+        };
+    }
+   
+    
     loadingData=async()=>{
         try{
             const response = await axios.get('http://localhost:3002/Readboard');
@@ -34,9 +40,8 @@ class FreeBoard extends React.Component{
     render(){
         console.log("hihi")
         const{boards}=this.state;
-        console.log(boards.map(i=>i.boardtitle));
+        console.log(boards.map(i=>i._id));
         var cnt=0;
-
    
         return(
             <div>
@@ -53,11 +58,12 @@ class FreeBoard extends React.Component{
                                 <td>작성자</td>
                             </tr>
                             
-                            {boards.map((i,key)=>
+                            {boards.map((i)=>
                                 <tr>
-                                    <td key={key}>{cnt++}</td>
-                                    <td key={key}><a href="/freeboard">{i.boardtitle}</a></td>
-                                    <td key={key}>{i.boarduserid}</td>
+                                    <td key={i._id}>{cnt++}</td>
+                                    <td key={i._id}><Link to={`/boardcontent${i._id}`}>{i.boardtitle}</Link></td>
+                                    
+                                    <td key={i._id}>{i.boarduserid}</td>
                                 </tr>
                             
                             )}
