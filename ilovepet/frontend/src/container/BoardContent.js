@@ -52,9 +52,20 @@ class BoardContent extends React.Component{
                             return(
                                 <div>
                                     
+
+                                    
                                     <span key={i._id}>{i.boardtitle}</span>
                                     <span key={i._id}>{i.boardcontent}</span>
                                     <span key={i._id}>{i.boarduserid}</span>
+                                    <form>
+                                        <button >수정하기</button>
+                                    </form>
+                                    <form method="POST" action="http://localhost:3002/Deleteboard">
+                                        <input name="delid">{i._id}</input>
+                                        <button type="submit">삭제하기</button>
+                                    </form>
+                                    
+
                                 </div>
 
                             )
@@ -64,8 +75,7 @@ class BoardContent extends React.Component{
                                
                             
                     )}
-                    
-
+                   
                 </div>
                    
                 
