@@ -1,3 +1,4 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +7,7 @@ var logger = require('morgan');
 
 const cors =require('cors');
 var bodyParser = require('body-parser');
+
 
 const User = require('./models/user');
 const Board =require('./models/board');
@@ -62,29 +64,40 @@ app.post('/Signup',function(req,res,next){
 
 })
 
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.post('/Createboard',function(req,res,next){
   console.log("!!!!!!!!!!!createFreemoard server");
-
+  
   User.find(function(err,us){
     
   
-    console.log("ususususu"+Object.values(us));
-    if(us.userid===req.body.userid && us.userpassword===req.body.userpsw){
-      const boarddb=new Board({
-        boarduserid:req.body.userid,
-        boarduserpsw:req.body.userpsw,
-        boardtitle:req.body.title,
-        boardcontent:req.body.content
+    //console.log("ususususu"+Object.values(us));
+    //const obj = JSON.stringify(Object.values(us));
+    var cnt2=-1;
+    us.forEach(cnt=>{
+      cnt2+=1;
+      if(us[cnt2].userid===req.body.userid && us[cnt2].userpassword===req.body.userpsw){
+        console.log(us[cnt2].userid);
+        console.log(us[cnt2].userpassword);
+        const boarddb=new Board({
+          boarduserid:req.body.userid,
+          boarduserpsw:req.body.userpsw,
+          boardtitle:req.body.title,
+          boardcontent:req.body.content
+      
+        });
+        boarddb.save((err)=>{
+          res.redirect('http://localhost:3000/freeboard');
+        })
+      }
+      
+      
+      
+    });
+  
     
-      });
-      boarddb.save((err)=>{
-        res.redirect('http://localhost:3000/freeboard');
-      })
-    }
-    else{
-      res.status(401).send("존재하지 않는 회원입니다.")
-    }
+    
   })
 
   
@@ -98,7 +111,7 @@ app.get('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
   
      Board.find(function(err, board){
-        console.log(board);
+        console.log("body"+board.body);
         if(err) return res.status(500).send({error: 'database failure'});
         res.send(board);
       });

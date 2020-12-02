@@ -8,23 +8,47 @@ import Footer from "../component/Footer";
 
 class FreeBoard extends React.Component{
     
-    
+    state={
+        
+        board:[],
+    };
     
     constructor(props){
         super(props);
-        this.state={
-            title:'',
-            user:''
-            
-        };
+        
     }
 
-    render(){
+   
 
+    loadingData=async()=>{
+        try{
+            const response = await axios.get('http://localhost:3002/Readboard');
+            
+            this.setState({
+                board:response.data,
+            });
+            
+            console.log("res"+response.data);
+        }catch(e){
+            console.log(e);
+        }
+    };
+    componentDidMount() {
+         const { loadingData } = this;
+         loadingData();
+    }
+
+
+
+    render(){
+        console.log("hihi")
+        const{board}=this.state;
+        console.log(board);
       
-        axios.post("http://localhost:3002/Readboard")
-        .then(({board})=>{this.setState({ title:board.boardtitle,user:board.boarduserid});})
-        .catch(e=>{console.error(e);});
+        //axios.post("http://localhost:3002/Readboard")
+        //.then(({board})=>{this.setState({ title:board.boardtitle,user:board.boarduserid});})
+        //.catch(e=>{console.error(e);});
+        //console.log(this.state.title)
         
 
    
@@ -43,9 +67,10 @@ class FreeBoard extends React.Component{
                                 <td>작성자</td>
                             </tr>
                             <tr>
-                                <td> <a href="">{this.state.title}</a></td>
+                                
+                                <td> <a href="">{board.title}</a></td>
                                 <td> date </td>
-                                <td> {this.state.user} </td>
+                                <td> {board.user} </td>
                             </tr>
                                
                             
