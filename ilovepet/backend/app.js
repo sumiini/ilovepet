@@ -111,6 +111,16 @@ app.get('/Readboard',function(req,res,next){
 
 })
 
+//댓글 리스트 출력
+app.get('/Readcomment',function(req,res,next){
+  console.log("~~~~~~~~read comment server !");
+  Comment.find(function(err,comment){
+    if(err) return res.status(500).send({error: 'database failure'});
+    res.send(comment);
+
+  })
+})
+
 //게시글 삭제
 app.post('/Deleteboard',function(req,res,next){
   console.log(req.body);
