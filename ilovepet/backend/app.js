@@ -141,6 +141,26 @@ app.post('/Deleteboard',function(req,res,next){
   
 });
 
+//댓글 삭제
+app.post('/Deletecomment',function(req,res,next){
+  console.log(req.body);
+  
+  if(req.body.delcmid===req.body.cmdbuserid&&req.body.delcmpwd===req.body.cmdbpwd ){
+    Comment.deleteOne({_id:req.body.delcm}).then((result)=>{
+
+      res.redirect('http://localhost:3000/boardcontent'+req.body.interid);
+    }).catch((err)=>{
+      var response={
+        success:false
+      }
+      res.status(401).json(response);
+    });
+
+
+  }
+  
+});
+
 //게시글 수정
 app.post('/Editboard',function(req,res,next){
   console.log(req.body);

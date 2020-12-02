@@ -13,6 +13,7 @@ import Write from './container/Write';
 import BoardContent from'./container/BoardContent'
 import BoardEditAdmin from './container/BoardEditAdmin';
 import BoardDelAdmin from './container/BoardDelAdmin';
+import CommentDel from './container/CommentDel';
 
 
 class App extends React.Component {
@@ -38,6 +39,7 @@ class App extends React.Component {
            <Route path="/boardcontent:boardId" component={BoardContent}/>
            <Route path="/editadmin:boardId" component={BoardEditAdmin}/>
            <Route path="/deladmin:boardId" component={BoardDelAdmin}/>
+           <Route path="/delcm:boardId" component={CommentDel}/>
         </Router>
     );
     ;
