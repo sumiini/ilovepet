@@ -110,6 +110,7 @@ app.get('/Readboard',function(req,res,next){
 
 })
 
+//게시글 삭제
 app.post('/Deleteboard',function(req,res,next){
   console.log(req.body);
   
@@ -128,6 +129,51 @@ app.post('/Deleteboard',function(req,res,next){
   }
   
 });
+
+//게시글 수정
+app.post('/Editboard',function(req,res,next){
+  console.log(req.body);
+  
+  
+  if(req.body.editid===req.body.bduserid&&req.body.editpwd===req.body.bdpwd ){
+    
+    Board.findByIdAndUpdate(req.body.edid, {$set:{boardtitle:req.body.edittitle,boardcontent:req.body.editcontent}}, (err, movies)=>{
+      res.redirect('http://localhost:3000/freeboard');
+    });
+
+
+    
+
+
+
+
+  }
+  
+});
+
+
+/*
+Board.find(function(err,fboard){
+      var cnt3=-1;
+      fboard.forEach(cnt2=>{
+        cnt3+=1;
+        if(fboard[cnt3].boardtitle===req.body.beforetitle && fboard[cnt3].boardcontent===req.body.beforecontent){
+          console.log("foreach--title"+fboard[cnt3].boardtitle);
+          console.log("foreach--content"+fboard[cnt3].boardcontent);
+
+          fboard[cnt3].boardtitle=req.body.edititle;
+          fboard[cnt3].boardcontent=req.body.editcontent;
+          console.log("after"+req.body.edititle);
+          res.redirect('http://localhost:3000/freeboard');
+        }
+        
+      });
+    
+    })
+
+
+
+*/
 
 
 

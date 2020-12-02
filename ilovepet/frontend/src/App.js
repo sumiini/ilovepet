@@ -11,7 +11,8 @@ import Signup from './container/Signup';
 import Signin from './container/Signin';
 import Write from './container/Write';
 import BoardContent from'./container/BoardContent'
-import BoardAdmin from './container/BoardAdmin';
+import BoardEditAdmin from './container/BoardEditAdmin';
+import BoardDelAdmin from './container/BoardDelAdmin';
 
 
 class App extends React.Component {
@@ -35,7 +36,8 @@ class App extends React.Component {
            <Route path="/signin" component={Signin}/>
            <Route path="/write" component={Write}/>
            <Route path="/boardcontent:boardId" component={BoardContent}/>
-           <Route path="/admin:boardId" component={BoardAdmin}/>
+           <Route path="/editadmin:boardId" component={BoardEditAdmin}/>
+           <Route path="/deladmin:boardId" component={BoardDelAdmin}/>
         </Router>
     );
     ;
