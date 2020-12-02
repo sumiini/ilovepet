@@ -13,6 +13,7 @@ var bodyParser = require('body-parser');
 
 const User = require('./models/user');
 const Board =require('./models/board');
+const Comment = require('./models/comment');
 
 
 const port = 3002;
@@ -150,6 +151,35 @@ app.post('/Editboard',function(req,res,next){
   }
   
 });
+
+//댓글 추가
+app.post('/Addcomment',function(req,res,next){
+  //console.log(req.body);
+  User.find(function(err,us){
+    var cnt4=-1;
+    us.forEach(cnt9=>{
+      cnt4+=1;
+      if(us[cnt4].userid===req.body.commentid && us[cnt4].userpassword===req.body.commentpwd){
+        console.log(req.body);
+        //console.log(us[cnt4].commentpwd);
+        const commentdb=new Comment({
+          commentUserid:req.body.commentid,
+          commentUserpwd:req.body.commentpwd,
+          commentContent:req.body.commentcontent,
+          commentId:req.body.commentkey
+          
+        });
+        commentdb.save((err)=>{
+          console.log("commentkey"+req.body.commentkey);
+          res.redirect('http://localhost:3000/boardcontent'+req.body.commentkey);
+        })
+      }
+      
+    });
+  
+  })
+
+})
 
 
 /*
