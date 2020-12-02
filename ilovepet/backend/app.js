@@ -48,6 +48,7 @@ app.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+//회원가입
 app.post('/Signup',function(req,res,next){
   console.log("in server !!");
   console.log("**************"+req.body);
@@ -69,14 +70,10 @@ app.post('/Signup',function(req,res,next){
 
 
 app.use(bodyParser.urlencoded({extended: true}));
+//게시판 글쓰기 (회원 여부 확인하여 존재하는 회원만 글쓰기 가능)
 app.post('/Createboard',function(req,res,next){
   console.log("!!!!!!!!!!!createFreemoard server");
-  
   User.find(function(err,us){
-    
-  
-    //console.log("ususususu"+Object.values(us));
-    //const obj = JSON.stringify(Object.values(us));
     var cnt2=-1;
     us.forEach(cnt=>{
       cnt2+=1;
@@ -89,14 +86,11 @@ app.post('/Createboard',function(req,res,next){
           boardtitle:req.body.title,
           boardcontent:req.body.content
           
-      
         });
         boarddb.save((err)=>{
           res.redirect('http://localhost:3000/freeboard');
         })
       }
-      
-      
       
     });
   
@@ -104,6 +98,7 @@ app.post('/Createboard',function(req,res,next){
 
 })
 
+//자유게시판에서 제목을 누르면 해당 content 열람 가능
 app.get('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
   
@@ -115,13 +110,11 @@ app.get('/Readboard',function(req,res,next){
 
 })
 
-// app.get('/freeboard',function(req,res,next){
-//   Board.find({}).then((board)=>{
-//     res.render('freeboard',{boards:boards});
-//   }).catch((err)=>{
-//     console.log(err);
-//   });
-// });
+app.post('/Deleteboard',function(req,res,next){
+  console.log(req.body);
+
+})
+
 
 //============================================================
 // catch 404 and forward to error handler
