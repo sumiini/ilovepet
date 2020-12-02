@@ -61,7 +61,7 @@ class BoardContent extends React.Component{
                                         <button >수정하기</button>
                                     </form>
                                     <form method="POST" action="http://localhost:3002/Deleteboard">
-                                        <input name="delid">{i._id}</input>
+                                        <input type="hidden" value={i._id} name="delid"></input>
                                         <button type="submit">삭제하기</button>
                                     </form>
                                     
