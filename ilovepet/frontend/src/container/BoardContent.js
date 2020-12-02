@@ -10,20 +10,29 @@ class BoardContent extends React.Component{
         super(props);
         this.state={
             contentboards:[],
+            commentdata:[],
         };
     }
 
     loadingData=async()=>{
         try{
             const response = await axios.get('http://localhost:3002/Readboard');
-            console.log("hi");
+            console.log("loadingdata");
+
+            const response2 = await axios.get('http://localhost:3002/Readcomment');
+            console.log("loadingcommentdata");
+
+            
             this.setState({
                 contentboards:response.data,
+                commentdata:response2.data,
             });
         }catch(e){
             console.log(e);
         }
     };
+
+  
 
     componentDidMount() {
          const { loadingData } = this;
@@ -35,7 +44,9 @@ class BoardContent extends React.Component{
         let boardId = window.location.pathname.replace("/boardcontent","");
         console.log("id이지롱"+boardId);
         const{contentboards}=this.state;
+        const {commentdata}=this.state;
         console.log(contentboards.map(i=>i.boardtitle));
+        console.log(commentdata.map(n=>n.commentId));
         
 
         return(
@@ -66,7 +77,9 @@ class BoardContent extends React.Component{
                                 </div>
                             )    
                         }}
+                        
                     )}
+                    
                     <p/>
                     <div>댓글</div>
                     <form method="POST" action="http://localhost:3002/Addcomment">
@@ -79,11 +92,29 @@ class BoardContent extends React.Component{
                         <label>댓글내용</label>
                         <input type="text" name="commentcontent"></input>
                         <input type="hidden" name="commentkey" value={boardId}/>
-                        {console.log("ididididi"+boardId)}
+                        {console.log("idididid--"+boardId)}
 
                         <button type="submit">댓글추가</button>
 
                     </form>
+
+                    <div>댓글 리스트</div>
+                    {commentdata.map(m=>
+                        {if(m.commentId===boardId){
+                                return(
+                                    <div key={m._id}>
+                                        {m.commentContent}
+                                    </div>   
+                                    
+                                )
+                                
+
+                            }
+
+                        }
+                        
+                    )}
+                    
                 </div>
                 <Footer />
             </div>
