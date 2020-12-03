@@ -17,6 +17,7 @@ const User = require('./models/user');
 const Board =require('./models/board');
 const Comment = require('./models/comment');
 const FindBoard = require('./models/findboard');
+const FindComment = require('./models/findcomment');
 
 
 const port = 3002;
@@ -181,6 +182,16 @@ app.get('/Readcomment',function(req,res,next){
   })
 })
 
+//find 댓글 리스트 출력
+app.get('/Readfindcomment',function(req,res,next){
+  console.log("~~~~~~~~read find comment server !");
+  FindComment.find(function(err,fcomment){
+    if(err) return res.status(500).send({error: 'database failure'});
+    res.send(fcomment);
+
+  })
+})
+
 //게시글 삭제
 app.post('/Deleteboard',function(req,res,next){
   console.log(req.body);
@@ -209,6 +220,26 @@ app.post('/Deletecomment',function(req,res,next){
     Comment.deleteOne({_id:req.body.delcm}).then((result)=>{
 
       res.redirect('http://localhost:3000/boardcontent'+req.body.interid);
+    }).catch((err)=>{
+      var response={
+        success:false
+      }
+      res.status(401).json(response);
+    });
+
+
+  }
+  
+});
+
+//찾아주세요 댓글 삭제
+app.post('/Deletefindcomment',function(req,res,next){
+  console.log(req.body);
+  
+  if(req.body.delcmid===req.body.cmdbuserid&&req.body.delcmpwd===req.body.cmdbpwd ){
+    FindComment.deleteOne({_id:req.body.delfindcm}).then((result)=>{
+
+      res.redirect('http://localhost:3000/findcontent'+req.body.interid);
     }).catch((err)=>{
       var response={
         success:false
@@ -271,7 +302,7 @@ app.post('/Editfindboard',function(req,res,next){
   
 });
 
-//댓글 추가
+//자유 게시판 댓글 추가
 app.post('/Addcomment',function(req,res,next){
   //console.log(req.body);
   User.find(function(err,us){
@@ -291,6 +322,35 @@ app.post('/Addcomment',function(req,res,next){
         commentdb.save((err)=>{
           console.log("commentkey"+req.body.commentkey);
           res.redirect('http://localhost:3000/boardcontent'+req.body.commentkey);
+        })
+      }
+      
+    });
+  
+  })
+
+})
+
+//찾아주세요 댓글 추가
+app.post('/Addfindcomment',function(req,res,next){
+  //console.log(req.body);
+  User.find(function(err,us){
+    var cnt4=-1;
+    us.forEach(cnt9=>{
+      cnt4+=1;
+      if(us[cnt4].userid===req.body.commentid && us[cnt4].userpassword===req.body.commentpwd){
+        console.log(req.body);
+        //console.log(us[cnt4].commentpwd);
+        const findcommentdb=new FindComment({
+          commentUserid:req.body.commentid,
+          commentUserpwd:req.body.commentpwd,
+          commentContent:req.body.commentcontent,
+          commentId:req.body.commentkey
+          
+        });
+        findcommentdb.save((err)=>{
+          console.log("commentkey"+req.body.commentkey);
+          res.redirect('http://localhost:3000/findcontent'+req.body.commentkey);
         })
       }
       

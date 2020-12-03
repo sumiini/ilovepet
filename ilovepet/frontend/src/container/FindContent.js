@@ -19,13 +19,13 @@ class FindContent extends React.Component{
             const response = await axios.get('http://localhost:3002/Readfindboard');
             console.log("loadingdata");
 
-            //const response2 = await axios.get('http://localhost:3002/Readcomment');
+            const response2 = await axios.get('http://localhost:3002/Readfindcomment');
             console.log("loadingcommentdata");
 
             
             this.setState({
                 contentfindboards:response.data,
-                //findcommentdata:response2.data,
+                findcommentdata:response2.data,
             });
         }catch(e){
             console.log(e);
@@ -90,7 +90,7 @@ class FindContent extends React.Component{
                     
                     <p/>
                     <div>댓글</div>
-                    {/*<form method="POST" action="">
+                    {<form method="POST" action="http://localhost:3002/Addfindcomment">
                         <labe>id</labe>
                         <input type="text" name="commentid"></input>
                         <p/>
@@ -99,21 +99,21 @@ class FindContent extends React.Component{
                         <p/>
                         <label>댓글내용</label>
                         <input type="text" name="commentcontent"></input>
-                        <input type="hidden" name="commentkey" value={boardId}/>
-                        {console.log("idididid--"+boardId)}
+                        <input type="hidden" name="commentkey" value={findboardId}/>
+                        {console.log("idididid--"+findboardId)}
 
                         <button type="submit">댓글추가</button>
 
-                    </form>*/}
+                    </form>}
 
                     <div>댓글 리스트</div>
-                    {/*findcommentdata.map(m=>
-                        {if(m.commentId===boardId){
+                    {findcommentdata.map(m=>
+                        {if(m.commentId===findboardId){
                                 return(
                                     <div>
                                         <div key={m._id}>{m.commentContent}</div>
                                         <div key={m._id}>{m.commentUserid}</div>
-                                        <Link to={`/delcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link>
+                                        <Link to={`/delfindcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link>
                                     </div>
                                     
                                     
@@ -126,7 +126,7 @@ class FindContent extends React.Component{
 
                         }
                         
-                    )*/}
+                    )}
                     
                 </div>
                 <Footer />
