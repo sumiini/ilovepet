@@ -252,11 +252,20 @@ app.post('/Editboard',function(req,res,next){
       res.redirect('http://localhost:3000/freeboard');
     });
 
+  }
+  
+});
 
+//찾아주세요 게시글 수정
+app.post('/Editfindboard',function(req,res,next){
+  console.log(req.body);
+  
+  
+  if(req.body.editid===req.body.bduserid&&req.body.editpwd===req.body.bdpwd ){
     
-
-
-
+    FindBoard.findByIdAndUpdate(req.body.edid, {$set:{findboardtitle:req.body.edittitle,findboardcontent:req.body.editcontent,findboardplace:req.body.editplace}}, (err, movies)=>{
+      res.redirect('http://localhost:3000/find');
+    });
 
   }
   
