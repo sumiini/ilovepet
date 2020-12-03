@@ -46,29 +46,30 @@ class FindEditAdmin extends React.Component{
                                     <label>[ 작성자 ]</label>
                                     <p/>
                                     <span key={i._id}>{i.boarduserid}</span>
-                                    <form method="POST" action="">
+                                    <form method="POST" action="http://localhost:3002/Editfindboard">
                                         <input type="hidden" value={i._id} name="edid"></input>
                                         <h3>--------------------------------------</h3>
-                                        <label>제목</label>
-                                        <input type="text" placeholder={i.boardtitle} name="edittitle"/>
-                                        <p/>
-                                        <h3>--------------------------------------</h3>
-                                        <label>내용</label>
-                                        <input type="text" placeholder={i.boardcontent} name="editcontent"/>
-                                        <p/>
-                                        <h3>--------------------------------------</h3>
-                                        <labe>id</labe>
+                                        <label>[제목]</label>
+                                        <input type="text" placeholder={i.findboardtitle} name="edittitle"/>
+                                        <label>[내용]</label>
+                                        <input type="text" placeholder={i.findboardcontent} name="editcontent"/>
+                                        <label>[장소]</label>
+                                        <input type="text" placeholder={i.findboardplace} name="editplace"/>
+                                        <label>[이미지]</label>
+                                        <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
+                                        <label>id</label>
                                         <input type="text" name="editid"></input>
-                                        <p/>
                                         <h3>--------------------------------------</h3>
                                         <label>password</label>
                                         <input type="password" name="editpwd"></input>
                                         <p/>
-                                        <input type="hidden" value={i.boardtitle} name="beforetitle"/>
-                                        <input type="hidden" value={i.boardcontent} name="beforecontent"/>
+                                        <input type="hidden" value={i.findboardtitle} name="beforetitle"/>
+                                        <input type="hidden" value={i.findboardcontent} name="beforecontent"/>
+                                        <input type="hidden" value={i.findboardplace} name="beforeplace"/>
+                                        <input type="hidden" value={i.findboardimg} name="beforeimg"/>
 
-                                        <input type="hidden" value={i.boarduserid} name="bduserid"/>
-                                        <input type="hidden" value={i.boarduserpsw} name="bdpwd"></input>
+                                        <input type="hidden" value={i.findboarduserid} name="bduserid"/>
+                                        <input type="hidden" value={i.findboarduserpsw} name="bdpwd"></input>
                                         <button type="submit">수정하기</button>
                                     </form>
                                 </div>
