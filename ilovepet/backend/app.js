@@ -5,6 +5,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var multer = require('multer');
+
 
 const cors =require('cors');
 
@@ -14,6 +16,7 @@ var bodyParser = require('body-parser');
 const User = require('./models/user');
 const Board =require('./models/board');
 const Comment = require('./models/comment');
+const FindBoard = require('./models/findboard');
 
 
 const port = 3002;
@@ -32,6 +35,9 @@ mongoose.connect('mongodb://localhost:27017/projecttest', {
 });
 mongooseAutoInc.initialize(mongoose.connection);
 
+//var db = mongoose.connection.db;
+//var mongoDriver = mongoose.mongo;
+//var gfs = new Gridfs(db,mongoDriver);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -99,6 +105,46 @@ app.post('/Createboard',function(req,res,next){
 
 })
 
+//찾아주세요 게시글 작성
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
+if (typeof btoa === 'undefined') {
+  global.btoa = function (str) {
+    return new Buffer(str, 'binary').toString('base64');
+  };
+}
+
+app.post('/Createfindboard',function(req,res,next){
+  console.log("!!!!!!!!!!!createfindboard server");
+  console.log(req.body);
+  
+
+  User.find(function(err,us){
+    var cnt2=-1;
+    us.forEach(cnt=>{
+      cnt2+=1;
+      if(us[cnt2].userid===req.body.userid && us[cnt2].userpassword===req.body.userpsw){
+        console.log(us[cnt2].userid);
+        const boarddb=new FindBoard({
+          findboarduserid:req.body.userid,
+          findboarduserpsw:req.body.userpsw,
+          findboardtitle:req.body.title,
+          findboardcontent:req.body.content,
+          findboardplace:req.body.place,
+          findboardimg:req.body.imgfile,
+          
+        });
+        boarddb.save((err)=>{
+          res.redirect('http://localhost:3000/find');
+        })
+      }
+      
+    });
+  
+  })
+
+})
+
 //자유게시판에서 제목을 누르면 해당 content 열람 가능
 app.get('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
@@ -110,6 +156,20 @@ app.get('/Readboard',function(req,res,next){
       });
 
 })
+
+//찾아주세요 페이지의 게시글 리스트
+app.get('/Readfindboard',function(req,res,next){
+  console.log("!!!!@@@@@@ read find board server!!!");
+  
+     FindBoard.find(function(err, findboard){
+        //console.log(board);
+        if(err) return res.status(500).send({error: 'database failure'});
+        res.send(findboard);
+      });
+
+})
+
+
 
 //댓글 리스트 출력
 app.get('/Readcomment',function(req,res,next){

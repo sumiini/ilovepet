@@ -102,9 +102,14 @@ class BoardContent extends React.Component{
                     {commentdata.map(m=>
                         {if(m.commentId===boardId){
                                 return(
-                                    <div key={m._id}>
-                                        {m.commentContent}
-                                    </div>   
+                                    <div>
+                                        <div key={m._id}>{m.commentContent}</div>
+                                        <div key={m._id}>{m.commentUserid}</div>
+                                        <Link to={`/delcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link>
+                                    </div>
+                                    
+                                    
+
                                     
                                 )
                                 
