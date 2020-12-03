@@ -36,7 +36,6 @@ class Protect extends React.Component{
     }
 
     render(){
-        console.log("hihi")
         const{protectboards}=this.state;
         console.log(protectboards.map(i=>i._id));
   
