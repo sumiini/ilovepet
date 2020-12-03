@@ -19,6 +19,7 @@ const Comment = require('./models/comment');
 const FindBoard = require('./models/findboard');
 const FindComment = require('./models/findcomment');
 const ProtectBoard = require('./models/protectboard');
+const ProtectComment = require('./models/protectcomment');
 
 
 const port = 3002;
@@ -233,6 +234,16 @@ app.get('/Readfindcomment',function(req,res,next){
   })
 })
 
+//protect 댓글 리스트 출력
+app.get('/Readprotectcomment',function(req,res,next){
+  console.log("~~~~~~~~read protect comment server !");
+  ProtectComment.find(function(err,pcomment){
+    if(err) return res.status(500).send({error: 'database failure'});
+    res.send(pcomment);
+
+  })
+})
+
 //게시글 삭제
 app.post('/Deleteboard',function(req,res,next){
   console.log(req.body);
@@ -427,6 +438,35 @@ app.post('/Addfindcomment',function(req,res,next){
         findcommentdb.save((err)=>{
           console.log("commentkey"+req.body.commentkey);
           res.redirect('http://localhost:3000/findcontent'+req.body.commentkey);
+        })
+      }
+      
+    });
+  
+  })
+
+})
+
+//보호중이에요 댓글 추가
+app.post('/Addprotectcomment',function(req,res,next){
+  //console.log(req.body);
+  User.find(function(err,us){
+    var cnt4=-1;
+    us.forEach(cnt9=>{
+      cnt4+=1;
+      if(us[cnt4].userid===req.body.commentid && us[cnt4].userpassword===req.body.commentpwd){
+        console.log(req.body);
+        //console.log(us[cnt4].commentpwd);
+        const protectcommentdb=new ProtectComment({
+          commentUserid:req.body.commentid,
+          commentUserpwd:req.body.commentpwd,
+          commentContent:req.body.commentcontent,
+          commentId:req.body.commentkey
+          
+        });
+        protectcommentdb.save((err)=>{
+          console.log("commentkey"+req.body.commentkey);
+          res.redirect('http://localhost:3000/protectcontent'+req.body.commentkey);
         })
       }
       
