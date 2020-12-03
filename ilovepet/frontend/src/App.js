@@ -21,6 +21,7 @@ import FindDelAdmin from './container/FindDelAdmin';
 import FindCommentDel from './container/FindCommentDel';
 import ProtectWrite from './container/ProtectWrite';
 import ProtectContent from './container/ProtectContent';
+import ProtectDelAdmin from './container/ProtectDelAdmin';
 
 
 class App extends React.Component {
@@ -47,7 +48,8 @@ class App extends React.Component {
            <Route path="/write" component={Write}/>
 
            <Route path="/protectwrite" component={ProtectWrite}/>
-           <Route path="/protectcontent:protectboardId" component={ProtectContent}></Route>
+           <Route path="/protectcontent:protectboardId" component={ProtectContent}/>
+           <Route path="/protectdeladmin:protectboardId" component={ProtectDelAdmin}/>
 
            <Route path="/findwrite" component={FindWrite}/>
            <Route path="/findcontent:findboardId" component={FindContent}/>
