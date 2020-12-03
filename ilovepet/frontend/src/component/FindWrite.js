@@ -1,9 +1,9 @@
 import React from "react";
 import axios from 'axios';
 
-import Header from "../component/Header";
-import Center from "../component/Center";
-import Footer from "../component/Footer";
+import Header from "../container/Header";
+import Center from "../container/Center";
+import Footer from "../container/Footer";
 
 
 class FindWrite extends React.Component{

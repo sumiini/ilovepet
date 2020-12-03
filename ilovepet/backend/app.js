@@ -363,6 +363,21 @@ app.post('/Editfindboard',function(req,res,next){
   
 });
 
+//보호중이에요 게시글 수정
+app.post('/Editprotectboard',function(req,res,next){
+  console.log(req.body);
+  
+  
+  if(req.body.editid===req.body.bduserid&&req.body.editpwd===req.body.bdpwd ){
+    
+    ProtectBoard.findByIdAndUpdate(req.body.edid, {$set:{protectboardtitle:req.body.edittitle,protectboardcontent:req.body.editcontent,protectboardplace:req.body.editplace}}, (err, movies)=>{
+      res.redirect('http://localhost:3000/protect');
+    });
+
+  }
+  
+});
+
 //자유 게시판 댓글 추가
 app.post('/Addcomment',function(req,res,next){
   //console.log(req.body);

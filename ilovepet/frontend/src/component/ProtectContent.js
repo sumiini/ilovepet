@@ -2,30 +2,30 @@ import React from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-import Header from "../component/Header";
-import Footer from "../component/Footer";
+import Header from "../container/Header";
+import Footer from "../container/Footer";
 
-class BoardContent extends React.Component{
+class ProtectContent extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            contentboards:[],
-            commentdata:[],
+            contentprotectboards:[],
+            findcommentdata:[],
         };
     }
 
     loadingData=async()=>{
         try{
-            const response = await axios.get('http://localhost:3002/Readboard');
+            const response = await axios.get('http://localhost:3002/Readprotectboard');
             console.log("loadingdata");
 
-            const response2 = await axios.get('http://localhost:3002/Readcomment');
+            //const response2 = await axios.get('http://localhost:3002/Readprotectcomment');
             console.log("loadingcommentdata");
 
             
             this.setState({
-                contentboards:response.data,
-                commentdata:response2.data,
+                contentprotectboards:response.data,
+                //protectcommentdata:response2.data,
             });
         }catch(e){
             console.log(e);
@@ -36,43 +36,51 @@ class BoardContent extends React.Component{
 
     componentDidMount() {
          const { loadingData } = this;
-         //loadingData();
          loadingData();
+         //loadingData();
     }
 
     render(){
-        let boardId = window.location.pathname.replace("/boardcontent","");
-        console.log("id이지롱"+boardId);
-        const{contentboards}=this.state;
-        const {commentdata}=this.state;
-        console.log(contentboards.map(i=>i.boardtitle));
-        console.log(commentdata.map(n=>n.commentId));
+        let protectboardId = window.location.pathname.replace("/protectcontent","");
+        console.log("id이지롱"+protectboardId);
+        const{contentprotectboards}=this.state;
+        //const {protectcommentdata}=this.state;
+        console.log(contentprotectboards.map(i=>i.protectboardtitle));
+       // console.log(protectcommentdata.map(n=>n.commentId));
         
 
         return(
             <div>
                 <Header />
                 <div className="boardcontent">
-                    {contentboards.map(i=>
+                    {contentprotectboards.map(i=>
                     
-                        {if(i._id===boardId){
+                        {if(i._id===protectboardId){
                             
                             return(
                                 <div>
                                     <h4>[ 작성자 ]</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boarduserid}</span>
+                                    <span key={i._id}>{i.protectboarduserid}</span>
 
                                     <h4>[ 제목 ]</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boardtitle}</span>
+                                    <span key={i._id}>{i.protectboardtitle}</span>
                                     <h4>[ 내용 ]</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boardcontent}</span>
+                                    <span key={i._id}>{i.protectboardcontent}</span>
                                     <p/>
-                                   <Link to={`/deladmin${i._id}`}>삭제</Link>
+                                    <h4>[ 장소 ]</h4>
+                                    <p/>
+                                    <span key={i._id}>{i.protectboardplace}</span>
+                                    <h4>[ 사진 ]</h4>
+                                    <p/>
+                                    <img width="200px" key={i._id} src={"/images/"+i.protectboardimg}></img>
+                                    <p/>
+                                    <p/>
+                                   <Link to={`/protecteditadmin${i._id}`}>수정</Link>
                                    <br/>
-                                   <Link to={`/editadmin${i._id}`}>수정</Link>
+                                   <Link to={`/protectdeladmin${i._id}`}>삭제</Link>
                                     
                                 </div>
                             )    
@@ -82,7 +90,7 @@ class BoardContent extends React.Component{
                     
                     <p/>
                     <div>댓글</div>
-                    <form method="POST" action="http://localhost:3002/Addcomment">
+                    {/*<form method="POST" action="http://localhost:3002/Addprotectcomment">
                         <labe>id</labe>
                         <input type="text" name="commentid"></input>
                         <p/>
@@ -91,21 +99,21 @@ class BoardContent extends React.Component{
                         <p/>
                         <label>댓글내용</label>
                         <input type="text" name="commentcontent"></input>
-                        <input type="hidden" name="commentkey" value={boardId}/>
-                        {console.log("idididid--"+boardId)}
+                        <input type="hidden" name="commentkey" value={protectboardId}/>
+                        {console.log("idididid--"+protectboardId)}
 
                         <button type="submit">댓글추가</button>
 
-                    </form>
+                    </form>*/}
 
                     <div>댓글 리스트</div>
-                    {commentdata.map(m=>
-                        {if(m.commentId===boardId){
+                    {/*protectcommentdata.map(m=>
+                        {if(m.commentId===protectboardId){
                                 return(
                                     <div>
                                         <div key={m._id}>{m.commentContent}</div>
                                         <div key={m._id}>{m.commentUserid}</div>
-                                        <Link to={`/delcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link>
+                                        <Link to={`/delprotectcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link>
                                     </div>
                                     
                                     
@@ -118,7 +126,7 @@ class BoardContent extends React.Component{
 
                         }
                         
-                    )}
+                    )*/}
                     
                 </div>
                 <Footer />
@@ -127,4 +135,4 @@ class BoardContent extends React.Component{
     }
 }
 
-export default BoardContent;
+export default ProtectContent;

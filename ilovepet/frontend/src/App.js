@@ -1,27 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Main from "./container/Main";
+import Main from "./component/Main";
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import FreeBoard from './container/FreeBoard';
-import Find from './container/Find';
-import Protect from './container/Protect';
-import Signup from './container/Signup';
-import Signin from './container/Signin';
-import Write from './container/Write';
-import BoardContent from'./container/BoardContent'
-import BoardEditAdmin from './container/BoardEditAdmin';
-import BoardDelAdmin from './container/BoardDelAdmin';
-import CommentDel from './container/CommentDel';
-import FindWrite from './container/FindWrite';
-import FindContent from './container/FindContent';
-import FindEditAdmin from './container/FindEditAdmin';
-import FindDelAdmin from './container/FindDelAdmin';
-import FindCommentDel from './container/FindCommentDel';
-import ProtectWrite from './container/ProtectWrite';
-import ProtectContent from './container/ProtectContent';
-import ProtectDelAdmin from './container/ProtectDelAdmin';
+import FreeBoard from './component/FreeBoard';
+import Find from './component/Find';
+import Protect from './component/Protect';
+import Signup from './component/Signup';
+import Signin from './component/Signin';
+import Write from './component/Write';
+import BoardContent from'./component/BoardContent'
+import BoardEditAdmin from './component/BoardEditAdmin';
+import BoardDelAdmin from './component/BoardDelAdmin';
+import CommentDel from './component/CommentDel';
+import FindWrite from './component/FindWrite';
+import FindContent from './component/FindContent';
+import FindEditAdmin from './component/FindEditAdmin';
+import FindDelAdmin from './component/FindDelAdmin';
+import FindCommentDel from './component/FindCommentDel';
+import ProtectWrite from './component/ProtectWrite';
+import ProtectContent from './component/ProtectContent';
+import ProtectDelAdmin from './component/ProtectDelAdmin';
+import ProtectEditAdmin from './component/ProtectEditAdmin';
 
 
 class App extends React.Component {
@@ -50,6 +51,7 @@ class App extends React.Component {
            <Route path="/protectwrite" component={ProtectWrite}/>
            <Route path="/protectcontent:protectboardId" component={ProtectContent}/>
            <Route path="/protectdeladmin:protectboardId" component={ProtectDelAdmin}/>
+           <Route path="/protecteditadmin:protectboardId" component={ProtectEditAdmin}/>
 
            <Route path="/findwrite" component={FindWrite}/>
            <Route path="/findcontent:findboardId" component={FindContent}/>
