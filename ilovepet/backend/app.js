@@ -221,6 +221,26 @@ app.post('/Deletecomment',function(req,res,next){
   
 });
 
+//찾아주세요 게시글 삭제
+app.post('/Deletefindboard',function(req,res,next){
+  console.log(req.body);
+  
+  if(req.body.adminid===req.body.bduserid&&req.body.adminpwd===req.body.bdpwd ){
+    FindBoard.deleteOne({_id:req.body.delid}).then((result)=>{
+
+      res.redirect('http://localhost:3000/find');
+    }).catch((err)=>{
+      var response={
+        success:false
+      }
+      res.status(401).json(response);
+    });
+
+
+  }
+  
+});
+
 //게시글 수정
 app.post('/Editboard',function(req,res,next){
   console.log(req.body);
