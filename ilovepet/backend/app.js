@@ -304,6 +304,26 @@ app.post('/Deletefindcomment',function(req,res,next){
   
 });
 
+//보호중이에요 댓글 삭제
+app.post('/Deleteprotectcomment',function(req,res,next){
+  console.log(req.body);
+  
+  if(req.body.delcmid===req.body.cmdbuserid&&req.body.delcmpwd===req.body.cmdbpwd ){
+    ProtectComment.deleteOne({_id:req.body.delfindcm}).then((result)=>{
+
+      res.redirect('http://localhost:3000/protectcontent'+req.body.interid);
+    }).catch((err)=>{
+      var response={
+        success:false
+      }
+      res.status(401).json(response);
+    });
+
+
+  }
+  
+});
+
 //찾아주세요 게시글 삭제
 app.post('/Deletefindboard',function(req,res,next){
   console.log(req.body);

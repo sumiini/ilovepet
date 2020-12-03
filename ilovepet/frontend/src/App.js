@@ -23,6 +23,7 @@ import ProtectWrite from './component/ProtectWrite';
 import ProtectContent from './component/ProtectContent';
 import ProtectDelAdmin from './component/ProtectDelAdmin';
 import ProtectEditAdmin from './component/ProtectEditAdmin';
+import ProtectCommentDel from './component/ProtectCommentDel';
 
 
 class App extends React.Component {
@@ -52,6 +53,7 @@ class App extends React.Component {
            <Route path="/protectcontent:protectboardId" component={ProtectContent}/>
            <Route path="/protectdeladmin:protectboardId" component={ProtectDelAdmin}/>
            <Route path="/protecteditadmin:protectboardId" component={ProtectEditAdmin}/>
+           <Route path="/delprotectcm:protectboardId" component={ProtectCommentDel}/>
 
            <Route path="/findwrite" component={FindWrite}/>
            <Route path="/findcontent:findboardId" component={FindContent}/>
