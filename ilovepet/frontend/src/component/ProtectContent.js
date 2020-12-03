@@ -10,7 +10,7 @@ class ProtectContent extends React.Component{
         super(props);
         this.state={
             contentprotectboards:[],
-            findcommentdata:[],
+            protectcommentdata:[],
         };
     }
 
@@ -19,13 +19,13 @@ class ProtectContent extends React.Component{
             const response = await axios.get('http://localhost:3002/Readprotectboard');
             console.log("loadingdata");
 
-            //const response2 = await axios.get('http://localhost:3002/Readprotectcomment');
+            const response2 = await axios.get('http://localhost:3002/Readprotectcomment');
             console.log("loadingcommentdata");
 
             
             this.setState({
                 contentprotectboards:response.data,
-                //protectcommentdata:response2.data,
+                protectcommentdata:response2.data,
             });
         }catch(e){
             console.log(e);
@@ -44,7 +44,7 @@ class ProtectContent extends React.Component{
         let protectboardId = window.location.pathname.replace("/protectcontent","");
         console.log("id이지롱"+protectboardId);
         const{contentprotectboards}=this.state;
-        //const {protectcommentdata}=this.state;
+        const {protectcommentdata}=this.state;
         console.log(contentprotectboards.map(i=>i.protectboardtitle));
        // console.log(protectcommentdata.map(n=>n.commentId));
         
@@ -90,7 +90,7 @@ class ProtectContent extends React.Component{
                     
                     <p/>
                     <div>댓글</div>
-                    {/*<form method="POST" action="http://localhost:3002/Addprotectcomment">
+                    {<form method="POST" action="http://localhost:3002/Addprotectcomment">
                         <labe>id</labe>
                         <input type="text" name="commentid"></input>
                         <p/>
@@ -104,10 +104,10 @@ class ProtectContent extends React.Component{
 
                         <button type="submit">댓글추가</button>
 
-                    </form>*/}
+                    </form>}
 
                     <div>댓글 리스트</div>
-                    {/*protectcommentdata.map(m=>
+                    {protectcommentdata.map(m=>
                         {if(m.commentId===protectboardId){
                                 return(
                                     <div>
@@ -126,7 +126,7 @@ class ProtectContent extends React.Component{
 
                         }
                         
-                    )*/}
+                    )}
                     
                 </div>
                 <Footer />
