@@ -2,8 +2,8 @@ import React from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-import Header from "../component/Header";
-import Footer from "../component/Footer";
+import Header from "../container/Header";
+import Footer from "../container/Footer";
 
 class FindCommentDel extends React.Component{
     constructor(props){

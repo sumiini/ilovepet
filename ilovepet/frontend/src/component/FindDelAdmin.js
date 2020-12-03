@@ -2,10 +2,10 @@ import React from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-import Header from "../component/Header";
-import Footer from "../component/Footer";
+import Header from "../container/Header";
+import Footer from "../container/Footer";
 
-class BoardDelAdmin extends React.Component{
+class FindDelAdmin extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -14,7 +14,7 @@ class BoardDelAdmin extends React.Component{
     }
     loadingData=async()=>{
         try{
-            const response = await axios.get('http://localhost:3002/Readboard');
+            const response = await axios.get('http://localhost:3002/Readfindboard');
             console.log("hi");
             this.setState({
                 adminboards:response.data,
@@ -25,14 +25,13 @@ class BoardDelAdmin extends React.Component{
     };
     componentDidMount() {
          const { loadingData } = this;
-         //loadingData();
          loadingData();
+         //loadingData();
     }
     render(){
-        let boardAdminId = window.location.pathname.replace("/deladmin","");
+        let boardAdminId = window.location.pathname.replace("/finddeladmin","");
         console.log(boardAdminId);
         const{adminboards}=this.state;
-        console.log(adminboards.map(i=>i.boardtitle));
         return(
             <div>
                 <Header />
@@ -42,21 +41,29 @@ class BoardDelAdmin extends React.Component{
                             return(
                                 <div>
                                     <label>[ 제목 ]</label>
-                                    <p/>
-                                    <span key={i._id}>{i.boardtitle}</span>
+                                    
+                                    <span key={i._id}>{i.findboardtitle}</span>
                                     <p/>
                                     <h3>--------------------------------------</h3>
                                     <label>[ 내용 ]</label>
-                                    <p/>
-                                    <span key={i._id}>{i.boardcontent}</span>
+                                   
+                                    <span key={i._id}>{i.findboardcontent}</span>
                                     <p/>
                                     <h3>--------------------------------------</h3>
                                     <label>[ 작성자 ]</label>
+                                   
+                                    <span key={i._id}>{i.findboarduserid}</span>
                                     <p/>
-                                    <span key={i._id}>{i.boarduserid}</span>
+                                    <label>[ 장소 ]</label>
+                                    
+                                    <span key={i._id}>{i.findboardplace}</span>
+                                    <p/>
+                                    <label>[ 이미지 ]</label>
+                                    
+                                    <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
                                     <p/>
                                     <h3>--------------------------------------</h3>
-                                    <form method="POST" action="http://localhost:3002/Deleteboard">
+                                    <form method="POST" action="http://localhost:3002/Deletefindboard">
                                         <input type="hidden" value={i._id} name="delid"></input>
                                         <labe>id</labe>
                                         <input type="text" name="adminid"></input>
@@ -64,8 +71,8 @@ class BoardDelAdmin extends React.Component{
                                         <label>password</label>
                                         <input type="password" name="adminpwd"></input>
                                         <p/>
-                                        <input type="hidden" value={i.boarduserid} name="bduserid"/>
-                                        <input type="hidden" value={i.boarduserpsw} name="bdpwd"></input>
+                                        <input type="hidden" value={i.findboarduserid} name="bduserid"/>
+                                        <input type="hidden" value={i.findboarduserpsw} name="bdpwd"></input>
                                         <button type="submit">삭제하기</button>
                                     </form>
                                 </div>
@@ -79,4 +86,4 @@ class BoardDelAdmin extends React.Component{
     }
 }
 
-export default BoardDelAdmin;
+export default FindDelAdmin;
