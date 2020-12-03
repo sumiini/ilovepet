@@ -15,6 +15,7 @@ import BoardEditAdmin from './container/BoardEditAdmin';
 import BoardDelAdmin from './container/BoardDelAdmin';
 import CommentDel from './container/CommentDel';
 import FindWrite from './container/FindWrite';
+import FindContent from './container/FindContent';
 
 
 class App extends React.Component {
@@ -38,6 +39,7 @@ class App extends React.Component {
            <Route path="/signin" component={Signin}/>
            <Route path="/write" component={Write}/>
            <Route path="/findwrite" component={FindWrite}/>
+           <Route path="/findcontent:findboardId" component={FindContent}/>
            <Route path="/boardcontent:boardId" component={BoardContent}/>
            <Route path="/editadmin:boardId" component={BoardEditAdmin}/>
            <Route path="/deladmin:boardId" component={BoardDelAdmin}/>

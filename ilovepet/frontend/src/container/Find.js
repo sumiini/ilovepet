@@ -52,7 +52,10 @@ class Find extends React.Component{
                         <div className="find-list">
                             
                             {findboards.map((i)=>
-                                <div>
+                            
+                            
+                                <Link to={`/findcontent${i._id}`}>
+                                 <div>
                                     
                                     <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
                                     <div key={i._id}>{i.findboardplace}</div>
@@ -60,6 +63,8 @@ class Find extends React.Component{
                                     <div key={i._id}>{i.findboarduserid}</div>
                                     {console.log("../image/"+i.findboardimg)}
                                 </div>
+                                </Link>
+                               
                             
                             )}
                             
