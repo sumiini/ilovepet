@@ -18,6 +18,7 @@ const Board =require('./models/board');
 const Comment = require('./models/comment');
 const FindBoard = require('./models/findboard');
 const FindComment = require('./models/findcomment');
+const ProtectBoard = require('./models/protectboard');
 
 
 const port = 3002;
@@ -107,13 +108,6 @@ app.post('/Createboard',function(req,res,next){
 })
 
 //찾아주세요 게시글 작성
-global.Buffer = global.Buffer || require('buffer').Buffer;
-
-if (typeof btoa === 'undefined') {
-  global.btoa = function (str) {
-    return new Buffer(str, 'binary').toString('base64');
-  };
-}
 
 app.post('/Createfindboard',function(req,res,next){
   console.log("!!!!!!!!!!!createfindboard server");
@@ -146,6 +140,41 @@ app.post('/Createfindboard',function(req,res,next){
 
 })
 
+
+//보호중이에요 게시글 작성
+app.post('/Createprotectboard',function(req,res,next){
+  console.log("!!!!!!!!!!!createprotectboard server");
+  console.log(req.body);
+  
+
+  User.find(function(err,us){
+    var cnt7=-1;
+    us.forEach(cnt=>{
+      cnt7+=1;
+      if(us[cnt7].userid===req.body.userid && us[cnt7].userpassword===req.body.userpsw){
+        console.log(us[cnt7].userid);
+        const protectboarddb=new ProtectBoard({
+          protectboarduserid:req.body.userid,
+          protectboarduserpsw:req.body.userpsw,
+          protectboardtitle:req.body.title,
+          protectboardcontent:req.body.content,
+          protectboardplace:req.body.place,
+          protectboardimg:req.body.imgfile,
+          
+        });
+        protectboarddb.save((err)=>{
+          res.redirect('http://localhost:3000/protect');
+        })
+      }
+      
+    });
+  
+  })
+
+})
+
+
+
 //자유게시판에서 제목을 누르면 해당 content 열람 가능
 app.get('/Readboard',function(req,res,next){
   console.log("!!!!@@@@@@ read board server!!!");
@@ -166,6 +195,18 @@ app.get('/Readfindboard',function(req,res,next){
         //console.log(board);
         if(err) return res.status(500).send({error: 'database failure'});
         res.send(findboard);
+      });
+
+})
+
+//보호해주세요 페이지의 게시글 리스트
+app.get('/Readprotectboard',function(req,res,next){
+  console.log("!!!!@@@@@@ read protect board server!!!");
+  
+     ProtectBoard.find(function(err, protectboard){
+        //console.log(board);
+        if(err) return res.status(500).send({error: 'database failure'});
+        res.send(protectboard);
       });
 
 })

@@ -19,6 +19,7 @@ import FindContent from './container/FindContent';
 import FindEditAdmin from './container/FindEditAdmin';
 import FindDelAdmin from './container/FindDelAdmin';
 import FindCommentDel from './container/FindCommentDel';
+import ProtectWrite from './container/ProtectWrite';
 
 
 class App extends React.Component {
@@ -43,6 +44,8 @@ class App extends React.Component {
            <Route path="/signin" component={Signin}/>
 
            <Route path="/write" component={Write}/>
+
+           <Route path="/protectwrite" component={ProtectWrite}/>
 
            <Route path="/findwrite" component={FindWrite}/>
            <Route path="/findcontent:findboardId" component={FindContent}/>
