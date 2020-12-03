@@ -78,9 +78,9 @@ class FindContent extends React.Component{
                                     <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
                                     <p/>
                                     <p/>
-                                   <Link to={`/`}>삭제</Link>
+                                   <Link to={`/findeditadmin${i._id}`}>수정</Link>
                                    <br/>
-                                   <Link to={`/}`}>수정</Link>
+                                   <Link to={`/finddeladmin${i._id}`}>삭제</Link>
                                     
                                 </div>
                             )    
