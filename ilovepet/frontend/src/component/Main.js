@@ -19,7 +19,6 @@ class Main extends React.Component{
             <div>
                 <Header/>
                 <Center/>
-                    Main Page
                 <Footer/>
             </div>
         )

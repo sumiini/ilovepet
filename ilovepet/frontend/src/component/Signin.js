@@ -21,13 +21,13 @@ class Signin extends React.Component{
                     <div>
                     <h1>로그인창</h1>
 
-                    <form method="" action="">
+                    <form method="POST" action="http://localhost:3002/Signin">
                         
                         <label>아이디</label>
-                        <input type="text"></input>
+                        <input name="signinID" type="text"></input>
                         <p/>
                         <label>비밀번호</label>
-                        <input type="password"></input>
+                        <input name="signinPWD" type="password"></input>
                         <p/>
                         <input type="submit" value="로그인"></input>
 

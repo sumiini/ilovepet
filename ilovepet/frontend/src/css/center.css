@@ -27,3 +27,7 @@
 .write-action{
     text-align: center;
 }
+
+.freeboardwriteID,.freeboardwritePWD{
+    display: none;
+}

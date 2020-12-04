@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Header from "../container/Header";
 import Footer from "../container/Footer";
-
+import '../css/controll.css';
 class ProtectContent extends React.Component{
     constructor(props){
         super(props);
@@ -91,11 +91,8 @@ class ProtectContent extends React.Component{
                     <p/>
                     <div>댓글</div>
                     {<form method="POST" action="http://localhost:3002/Addprotectcomment">
-                        <labe>id</labe>
-                        <input type="text" name="commentid"></input>
-                        <p/>
-                        <label>password</label>
-                        <input type="password" name="commentpwd"></input>
+                        <input className="controllid" type="text" name="commentid"></input>
+                        <input className="controllpwd" type="password" name="commentpwd"></input>
                         <p/>
                         <label>댓글내용</label>
                         <input type="text" name="commentcontent"></input>

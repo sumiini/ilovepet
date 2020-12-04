@@ -78,6 +78,27 @@ app.post('/Signup',function(req,res,next){
 })
 
 
+//회원가입
+app.post('/Signin',function(req,res,next){
+  console.log("in  로그인 server !!");
+  console.log("**************"+req.body);
+  
+  User.find(function(err,us){
+    var cnt2=-1;
+    us.forEach(cnt=>{
+      cnt2+=1;
+      if(us[cnt2].userid===req.body.signinID && us[cnt2].userpassword===req.body.signinPWD){
+        
+        res.redirect('http://localhost:3000/')
+      }
+      
+    });
+  
+  })
+
+})
+
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 //게시판 글쓰기 (회원 여부 확인하여 존재하는 회원만 글쓰기 가능)

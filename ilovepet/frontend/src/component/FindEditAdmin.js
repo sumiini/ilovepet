@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Header from "../container/Header";
 import Footer from "../container/Footer";
+import '../css/controll.css';
 
 class FindEditAdmin extends React.Component{
     constructor(props){
@@ -45,23 +46,32 @@ class FindEditAdmin extends React.Component{
                                 <div>
                                     <label>[ 작성자 ]</label>
                                     <p/>
+                                    {i.findboarduserid}
+                                    <p/>
                                     <span key={i._id}>{i.boarduserid}</span>
                                     <form method="POST" action="http://localhost:3002/Editfindboard">
+
+                                        <input className="controllid" type="text" name="editid"></input>
+                                        <input className="controllpwd" type="password" name="editpwd"></input>
+
                                         <input type="hidden" value={i._id} name="edid"></input>
                                         <h3>--------------------------------------</h3>
                                         <label>[제목]</label>
+                                        <p/>
                                         <input type="text" placeholder={i.findboardtitle} name="edittitle"/>
+                                        <p/>
                                         <label>[내용]</label>
+                                        <p/>
                                         <input type="text" placeholder={i.findboardcontent} name="editcontent"/>
+                                        <p/>
                                         <label>[장소]</label>
+                                        <p/>
                                         <input type="text" placeholder={i.findboardplace} name="editplace"/>
+                                        <p/>
                                         <label>[이미지]</label>
+                                        <p/>
                                         <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
-                                        <label>id</label>
-                                        <input type="text" name="editid"></input>
-                                        <h3>--------------------------------------</h3>
-                                        <label>password</label>
-                                        <input type="password" name="editpwd"></input>
+                                        
                                         <p/>
                                         <input type="hidden" value={i.findboardtitle} name="beforetitle"/>
                                         <input type="hidden" value={i.findboardcontent} name="beforecontent"/>

@@ -6,6 +6,7 @@ import Center from "../container/Center";
 import Footer from "../container/Footer";
 
 import '../css/center.css';
+import '../css/controll.css';
 
 class Write extends React.Component{
     constructor(props){
@@ -26,12 +27,10 @@ class Write extends React.Component{
                         <h4>*게시물은 등록된 사용자만이 작성할 수 있습니다.*</h4>
                         <form method="POST" action="http://localhost:3002/Createboard">
                             
-                            <label className="userid"><strong>ID</strong></label>
-                            <input type="text" placeholder="아이디" name="userid" required/>
+                            <input className="controllid" type="text" placeholder="아이디" name="userid" required/>
                             <p/>
 
-                            <label className="userpsw"><strong>Password</strong></label>
-                            <input type="password" placeholder="비밀번호" name="userpsw" required/>
+                            <input className="controllpwd" type="password" placeholder="비밀번호" name="userpsw" required/>
                             <p/>
 
                             <label className="title"><strong>제목</strong></label>
@@ -39,7 +38,7 @@ class Write extends React.Component{
                             <p/>
 
                             <label className="content"><strong>내용</strong></label>
-                            <input  type="textarea" name="content" placeholder="내용을 입력하세요."></input>
+                            <textarea   name="content" placeholder="내용을 입력하세요."></textarea>
                             <p/>
 
                             <input type="submit" value="글쓰기"></input>

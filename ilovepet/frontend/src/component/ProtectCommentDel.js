@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Header from "../container/Header";
 import Footer from "../container/Footer";
-
+import '../css/controll.css';
 class ProtectCommentDel extends React.Component{
     constructor(props){
         super(props);
@@ -65,15 +65,19 @@ class ProtectCommentDel extends React.Component{
                                     <p/>
                                     <span key={i._id}>{i.commentContent} </span>
                                     <p/>
+                                    <label>[ 작성자 ]</label>
+                                    <p/>
+                                    <span key={i._id}>{i.commentUserid} </span>
+                                    <p/>
                                     
                                     <h3>--------------------------------------</h3>
                                     <form method="POST" action="http://localhost:3002/Deleteprotectcomment">
+                                        
+                                        <input className="controllid" type="text" name="delcmid"></input>
+                                        <input className="controllpwd" type="password" name="delcmpwd"></input>
+
                                         <input type="hidden" value={i._id} name="delfindcm"></input>
-                                        <labe>id</labe>
-                                        <input type="text" name="delcmid"></input>
-                                        <p/>
-                                        <label>password</label>
-                                        <input type="password" name="delcmpwd"></input>
+                                        
                                         <p/>
                                         <input type="hidden" value={i.commentId} name="interid"/>
                                         <input type="hidden" value={i.commentUserid} name="cmdbuserid"/>

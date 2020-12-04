@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import Header from "../container/Header";
 import Footer from "../container/Footer";
 
+import '../css/controll.css';
+import '../css/boardadmin.css'
+
 class BoardEditAdmin extends React.Component{
     constructor(props){
         super(props);
@@ -42,27 +45,21 @@ class BoardEditAdmin extends React.Component{
                     
                         {if(i._id===boardEditId){
                             return(
-                                <div>
-                                    <label>[ 작성자 ]</label>
+                                <div className="all">
+                                    <h4 className="user">작성자</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boarduserid}</span>
+                                    <span className="userinfo" key={i._id}>{i.boarduserid}</span>
                                     <form method="POST" action="http://localhost:3002/Editboard">
                                         <input type="hidden" value={i._id} name="edid"></input>
-                                        <h3>--------------------------------------</h3>
-                                        <label>제목</label>
+                                        
+                                        <input className="controllid" type="text" name="editid"></input>
+                                        <input className="controllpwd" type="password" name="editpwd"></input>
+                                        <p/>
+                                        <h4 className="titlename">제목</h4>
                                         <input type="text" placeholder={i.boardtitle} name="edittitle"/>
                                         <p/>
-                                        <h3>--------------------------------------</h3>
-                                        <label>내용</label>
+                                        <h4 className="contentname">내용</h4>
                                         <input type="text" placeholder={i.boardcontent} name="editcontent"/>
-                                        <p/>
-                                        <h3>--------------------------------------</h3>
-                                        <labe>id</labe>
-                                        <input type="text" name="editid"></input>
-                                        <p/>
-                                        <h3>--------------------------------------</h3>
-                                        <label>password</label>
-                                        <input type="password" name="editpwd"></input>
                                         <p/>
                                         <input type="hidden" value={i.boardtitle} name="beforetitle"/>
                                         <input type="hidden" value={i.boardcontent} name="beforecontent"/>
@@ -71,6 +68,7 @@ class BoardEditAdmin extends React.Component{
                                         <input type="hidden" value={i.boarduserpsw} name="bdpwd"></input>
                                         <button type="submit">수정하기</button>
                                     </form>
+                                    <p/>
                                 </div>
                             )
                         }}

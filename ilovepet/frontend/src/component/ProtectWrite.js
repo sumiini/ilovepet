@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from "../container/Header";
 import Center from "../container/Center";
 import Footer from "../container/Footer";
-
+import '../css/controll.css';
 
 class ProtectWrite extends React.Component{
     constructor(props){
@@ -25,12 +25,8 @@ class ProtectWrite extends React.Component{
                         <h4>*게시물은 등록된 사용자만이 작성할 수 있습니다.*</h4>
                         <form method="POST" action="http://localhost:3002/Createprotectboard">
                             
-                            <label className="userid"><strong>ID</strong></label>
-                            <input type="text" placeholder="아이디" name="userid" required/>
-                            <p/>
-
-                            <label className="userpsw"><strong>Password</strong></label>
-                            <input type="password" placeholder="비밀번호" name="userpsw" required/>
+                            <input className="controllid" type="text" placeholder="아이디" name="userid" required/>
+                            <input className="controllpwd" type="password" placeholder="비밀번호" name="userpsw" required/>
                             <p/>
 
                             <label>장소</label>
