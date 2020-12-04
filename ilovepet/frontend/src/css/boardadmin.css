@@ -1,0 +1,15 @@
+.all{
+    text-align: center;
+}
+
+.delcontent{
+    text-align: center;
+}
+
+.titlename,.contentname,.user{
+    border-top: 1px solid black;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color:  rgb(240, 205, 142);
+    padding-bottom: 0.7%;
+}

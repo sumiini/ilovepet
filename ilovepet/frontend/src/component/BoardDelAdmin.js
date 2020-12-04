@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import Header from "../container/Header";
 import Footer from "../container/Footer";
+import '../css/controll.css';
+import '../css/boardadmin.css';
 
 class BoardDelAdmin extends React.Component{
     constructor(props){
@@ -40,34 +42,30 @@ class BoardDelAdmin extends React.Component{
                     {adminboards.map(i=>
                         {if(i._id===boardAdminId){
                             return(
-                                <div>
-                                    <label>[ 제목 ]</label>
+                                <div className="delcontent">
+                                    <h4 className="titlename">제목</h4>
                                     <p/>
                                     <span key={i._id}>{i.boardtitle}</span>
                                     <p/>
-                                    <h3>--------------------------------------</h3>
-                                    <label>[ 내용 ]</label>
+                                    <h4 className="contentname">내용</h4>
                                     <p/>
                                     <span key={i._id}>{i.boardcontent}</span>
                                     <p/>
-                                    <h3>--------------------------------------</h3>
-                                    <label>[ 작성자 ]</label>
+                                    <h4 className="user">작성자</h4>
                                     <p/>
                                     <span key={i._id}>{i.boarduserid}</span>
                                     <p/>
-                                    <h3>--------------------------------------</h3>
                                     <form method="POST" action="http://localhost:3002/Deleteboard">
                                         <input type="hidden" value={i._id} name="delid"></input>
-                                        <labe>id</labe>
-                                        <input type="text" name="adminid"></input>
-                                        <p/>
-                                        <label>password</label>
-                                        <input type="password" name="adminpwd"></input>
+                                        
+                                        <input className="controllid" type="text" name="adminid"></input>
+                                        <input className="controllpwd" type="password" name="adminpwd"></input>
                                         <p/>
                                         <input type="hidden" value={i.boarduserid} name="bduserid"/>
                                         <input type="hidden" value={i.boarduserpsw} name="bdpwd"></input>
                                         <button type="submit">삭제하기</button>
                                     </form>
+                                    <p/>
                                 </div>
                             )
                         }}

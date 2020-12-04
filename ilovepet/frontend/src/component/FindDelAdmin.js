@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Header from "../container/Header";
 import Footer from "../container/Footer";
-
+import '../css/controll.css';
 class FindDelAdmin extends React.Component{
     constructor(props){
         super(props);
@@ -64,12 +64,11 @@ class FindDelAdmin extends React.Component{
                                     <p/>
                                     <h3>--------------------------------------</h3>
                                     <form method="POST" action="http://localhost:3002/Deletefindboard">
+                                        
+                                        <input className="controllid" type="text" name="adminid"></input>
+                                        <input className="controllpwd" type="password" name="adminpwd"></input>
+
                                         <input type="hidden" value={i._id} name="delid"></input>
-                                        <labe>id</labe>
-                                        <input type="text" name="adminid"></input>
-                                        <p/>
-                                        <label>password</label>
-                                        <input type="password" name="adminpwd"></input>
                                         <p/>
                                         <input type="hidden" value={i.findboarduserid} name="bduserid"/>
                                         <input type="hidden" value={i.findboarduserpsw} name="bdpwd"></input>

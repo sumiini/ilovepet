@@ -1,0 +1,55 @@
+
+
+.freeboard{
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+.freeboard-list{
+    width: 60%;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    
+    
+   
+    
+}
+
+.boarwritebtn{
+   text-align: right;
+   padding-right: 15rem;
+   padding-bottom: 1rem;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.freebd{
+    text-align: center;
+}
+
+.btn2,.link{
+    text-decoration: none;
+    color: black;
+}
+.btn2:hover{
+    color: darkred;
+    font-weight:bold
+}
+.link:hover{
+    color: darkred;
+    font-weight: bold;
+}
+
+.td1,.td2,.td3,.th1,.th2,.th3{
+    border-bottom: 1px solid black;
+}
+.td1,.td2,.td3{
+    padding-bottom: 0.7rem;
+    padding-top:0.5rem;
+}
+.bodytr{
+    border-bottom: 1px solid black;
+}
+
+.headtt{
+    background-color: burlywood;
+}

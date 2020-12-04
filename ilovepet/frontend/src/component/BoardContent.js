@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import Header from "../container/Header";
 import Footer from "../container/Footer";
+import '../css/controll.css';
+import '../css/content.css'
 
 class BoardContent extends React.Component{
     constructor(props){
@@ -52,27 +54,31 @@ class BoardContent extends React.Component{
         return(
             <div>
                 <Header />
-                <div className="boardcontent">
+                <div >
                     {contentboards.map(i=>
                     
                         {if(i._id===boardId){
                             
                             return(
-                                <div>
-                                    <h4>[ 작성자 ]</h4>
+                                <div className="freeboardcontent">
+                                    <h4 className="boardtitle">제목</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boarduserid}</span>
+                                    <div className="tt" key={i._id}>{i.boardtitle}</div>
 
-                                    <h4>[ 제목 ]</h4>
+                                    <h4 className="boarduser">작성자</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boardtitle}</span>
-                                    <h4>[ 내용 ]</h4>
+                                    <div className="us" key={i._id}>{i.boarduserid}</div>
+
+                                    
+                                    <h4 className="boardcontent">내용</h4>
                                     <p/>
-                                    <span key={i._id}>{i.boardcontent}</span>
+                                    <div className="ct" key={i._id}>{i.boardcontent}</div>
                                     <p/>
-                                   <Link to={`/deladmin${i._id}`}>삭제</Link>
+                                    <div className="btn"><Link className="edibtn" to={`/editadmin${i._id}`}>수정</Link><Link className="delbtn" to={`/deladmin${i._id}`}>삭제</Link></div>
+                                   
+                                   
                                    <br/>
-                                   <Link to={`/editadmin${i._id}`}>수정</Link>
+                                   
                                     
                                 </div>
                             )    
@@ -81,44 +87,45 @@ class BoardContent extends React.Component{
                     )}
                     
                     <p/>
-                    <div>댓글</div>
+                    <h4 className="comm">댓글</h4>
                     <form method="POST" action="http://localhost:3002/Addcomment">
-                        <labe>id</labe>
-                        <input type="text" name="commentid"></input>
+                        
+                        <input className="controllid" type="text" name="commentid"></input>
+                        <input className="controllpwd" type="password" name="commentpwd"></input>
                         <p/>
-                        <label>password</label>
-                        <input type="password" name="commentpwd"></input>
-                        <p/>
-                        <label>댓글내용</label>
-                        <input type="text" name="commentcontent"></input>
                         <input type="hidden" name="commentkey" value={boardId}/>
-                        {console.log("idididid--"+boardId)}
-
-                        <button type="submit">댓글추가</button>
+                        
+                        <div className="commbtn"><input type="text" name="commentcontent"></input><button type="submit">댓글추가</button></div>
 
                     </form>
 
-                    <div>댓글 리스트</div>
-                    {commentdata.map(m=>
-                        {if(m.commentId===boardId){
-                                return(
-                                    <div>
-                                        <div key={m._id}>{m.commentContent}</div>
-                                        <div key={m._id}>{m.commentUserid}</div>
-                                        <Link to={`/delcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link>
-                                    </div>
+                    <p/>
+                    <h4 className="commlist">댓글 리스트</h4>
+                    <p/>
+                    <div className="commlt">
+                        {commentdata.map(m=>
+                            {if(m.commentId===boardId){
+                                    return(
+                                        <div className="commlog">
+                                            <div key={m._id}>{m.commentContent}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m.commentUserid}&nbsp;&nbsp;&nbsp;<Link className="commdel" to={`/delcm${m.commentId}*${m._id}&`}> 댓글 삭제</Link></div>
+                                    
+                                        
+                                        </div>
                                     
                                     
 
                                     
-                                )
+                                    )
                                 
 
-                            }
+                                }
 
-                        }
+                            }
                         
-                    )}
+                        )}
+
+                    </div>
+                   
                     
                 </div>
                 <Footer />
