@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const mongoose = require('mongoose');
 const mongooseAutoInc = require('mongoose-auto-increment');
+const { Script } = require('vm');
 
 mongoose.connect('mongodb://localhost:27017/projecttest', {
   useFindAndModify: false,
@@ -78,7 +79,7 @@ app.post('/Signup',function(req,res,next){
 })
 
 
-//회원가입
+//로그인
 app.post('/Signin',function(req,res,next){
   console.log("in  로그인 server !!");
   console.log("**************"+req.body);
@@ -90,6 +91,9 @@ app.post('/Signin',function(req,res,next){
       if(us[cnt2].userid===req.body.signinID && us[cnt2].userpassword===req.body.signinPWD){
         
         res.redirect('http://localhost:3000/')
+      }
+      else{
+        res.send('<script type="text/javascript"> alert("존재하지 않는 회원입니다.");</script>');
       }
       
     });
@@ -122,6 +126,11 @@ app.post('/Createboard',function(req,res,next){
           res.redirect('http://localhost:3000/freeboard');
         })
       }
+      else{
+        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
+      }
+      
+      
       
     });
   
@@ -154,6 +163,9 @@ app.post('/Createfindboard',function(req,res,next){
         boarddb.save((err)=>{
           res.redirect('http://localhost:3000/find');
         })
+      }
+      else{
+        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
       }
       
     });
@@ -188,8 +200,12 @@ app.post('/Createprotectboard',function(req,res,next){
           res.redirect('http://localhost:3000/protect');
         })
       }
+      else{
+        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
+      }
       
     });
+    
   
   })
 
@@ -282,6 +298,9 @@ app.post('/Deleteboard',function(req,res,next){
 
 
   }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
+  }
   
 });
 
@@ -301,6 +320,9 @@ app.post('/Deletecomment',function(req,res,next){
     });
 
 
+  }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -322,6 +344,9 @@ app.post('/Deletefindcomment',function(req,res,next){
 
 
   }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
+  }
   
 });
 
@@ -341,6 +366,9 @@ app.post('/Deleteprotectcomment',function(req,res,next){
     });
 
 
+  }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -362,6 +390,9 @@ app.post('/Deletefindboard',function(req,res,next){
 
 
   }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
+  }
   
 });
 
@@ -382,6 +413,9 @@ app.post('/Deleteprotectboard',function(req,res,next){
 
 
   }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
+  }
   
 });
 
@@ -396,6 +430,9 @@ app.post('/Editboard',function(req,res,next){
       res.redirect('http://localhost:3000/freeboard');
     });
 
+  }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -412,6 +449,9 @@ app.post('/Editfindboard',function(req,res,next){
     });
 
   }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
+  }
   
 });
 
@@ -426,6 +466,9 @@ app.post('/Editprotectboard',function(req,res,next){
       res.redirect('http://localhost:3000/protect');
     });
 
+  }
+  else{
+    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -451,6 +494,9 @@ app.post('/Addcomment',function(req,res,next){
           console.log("commentkey"+req.body.commentkey);
           res.redirect('http://localhost:3000/boardcontent'+req.body.commentkey);
         })
+      }
+      else{
+        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
       }
       
     });
@@ -481,6 +527,9 @@ app.post('/Addfindcomment',function(req,res,next){
           res.redirect('http://localhost:3000/findcontent'+req.body.commentkey);
         })
       }
+      else{
+        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
+      }
       
     });
   
@@ -509,6 +558,9 @@ app.post('/Addprotectcomment',function(req,res,next){
           console.log("commentkey"+req.body.commentkey);
           res.redirect('http://localhost:3000/protectcontent'+req.body.commentkey);
         })
+      }
+      else{
+        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
       }
       
     });
