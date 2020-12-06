@@ -71,7 +71,7 @@ class FindEditAdmin extends React.Component{
                                         <p/>
                                         <h4 className="contentname">내용</h4>
                                         <p/>
-                                        <input type="text" placeholder={i.findboardcontent} name="editcontent"/>
+                                        <textarea className="txtarea" type="text" placeholder={i.findboardcontent} name="editcontent"/>
                                         <p/>
                                         
                                         

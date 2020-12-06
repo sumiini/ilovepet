@@ -40,7 +40,7 @@ class Write extends React.Component{
 
                             <label className="content"><strong>내용</strong></label>
                             <p/>
-                            <textarea  name="content" placeholder="내용을 입력하세요."></textarea>
+                            <textarea className="txtarea"  name="content" placeholder="내용을 입력하세요."></textarea>
                             <p/>
 
                             <input type="submit" value="글쓰기"></input>

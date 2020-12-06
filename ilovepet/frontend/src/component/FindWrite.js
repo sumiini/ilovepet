@@ -5,7 +5,7 @@ import Header from "../container/Header";
 import Center from "../container/Center";
 import Footer from "../container/Footer";
 import '../css/controll.css';
-
+import '../css/center.css'
 class FindWrite extends React.Component{
     constructor(props){
         super(props);
@@ -54,7 +54,7 @@ class FindWrite extends React.Component{
                             <label className="content"><strong>내용</strong></label>
                             <p/>
 
-                            <textarea name="content" placeholder="내용을 입력하세요."></textarea>
+                            <textarea className="txtarea" name="content" placeholder="내용을 입력하세요."></textarea>
                             <p/>
 
                             <input type="submit" value="글쓰기"></input>

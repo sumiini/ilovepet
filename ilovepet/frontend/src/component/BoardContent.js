@@ -70,7 +70,7 @@ class BoardContent extends React.Component{
                                     <div className="us2" key={i._id}>{i.boarduserid}</div>
 
                                     
-                                    <h4 className="boardcontent">내용</h4>
+                                    <h4 className="boardcontent3">내용</h4>
                                     <p/>
                                     <div className="ct" key={i._id}>{i.boardcontent}</div>
                                     <p/>

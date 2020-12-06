@@ -1,0 +1,46 @@
+.h1protect{
+    text-align: center;
+}
+.protectmaster{
+    padding-bottom: 10%;
+}
+.list{
+    display: inline-block;
+    margin-left: 5%;
+}
+
+.protectlink{
+    text-decoration: none;
+    color: black;
+    float: left;
+}
+
+.protectwrite{
+    text-align: right;
+    margin-right: 20%;
+    margin-bottom: 5%;
+}
+
+.protectlink:hover{
+    font-weight: 800;
+    color: darkred;
+}
+
+.pla{
+    font-weight: 600;
+}
+
+.pwr{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.pwr:hover{
+    color: black;
+    background-color: darksalmon;
+    border-radius: 20%;
+}
+.h1protect{
+    text-align: center;
+}
