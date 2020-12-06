@@ -526,31 +526,6 @@ app.post('/Addprotectcomment',function(req,res,next){
 })
 
 
-/*
-Board.find(function(err,fboard){
-      var cnt3=-1;
-      fboard.forEach(cnt2=>{
-        cnt3+=1;
-        if(fboard[cnt3].boardtitle===req.body.beforetitle && fboard[cnt3].boardcontent===req.body.beforecontent){
-          console.log("foreach--title"+fboard[cnt3].boardtitle);
-          console.log("foreach--content"+fboard[cnt3].boardcontent);
-
-          fboard[cnt3].boardtitle=req.body.edititle;
-          fboard[cnt3].boardcontent=req.body.editcontent;
-          console.log("after"+req.body.edititle);
-          res.redirect('http://localhost:3000/freeboard');
-        }
-        
-      });
-    
-    })
-
-
-
-*/
-
-
-
 
 //============================================================
 // catch 404 and forward to error handler
