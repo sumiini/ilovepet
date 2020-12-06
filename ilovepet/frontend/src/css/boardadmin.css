@@ -1,4 +1,4 @@
-.all{
+.all,.con{
     text-align: center;
 }
 
@@ -6,10 +6,10 @@
     text-align: center;
 }
 
-.titlename,.contentname,.user{
+.titlename,.contentname,.user,.fcontentplace,.fcontentimg,.cocontent{
     border-top: 1px solid black;
     margin-left: 20%;
     margin-right: 20%;
-    background-color:  rgb(240, 205, 142);
+    background-color:  rgb(222, 184, 135);
     padding-bottom: 0.7%;
 }

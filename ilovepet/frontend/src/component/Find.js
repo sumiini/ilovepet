@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "../container/Header";
 import Footer from "../container/Footer";
 import BoardContent from './BoardContent';
+import '../css/find.css';
 
 class Find extends React.Component{
     constructor(props){
@@ -46,34 +47,36 @@ class Find extends React.Component{
                 <Header />
                 
                 {
-                    <div>
+                    <div className="findmaster">
                         
-                        <h1>찾아주세요</h1>
+                        <h1 className="h1find">찾아주세요</h1>
+                        <div className="findwrite">
+                           <a className="fwr" href="./findwrite">게시물작성</a>
+                        </div>
+
                         <div className="find-list">
+                            
                             
                             {findboards.map((i)=>
                             
-                            
-                                <Link to={`/findcontent${i._id}`}>
-                                 <div>
+                                <div className="list">
+                                    <Link className="findlink" to={`/findcontent${i._id}`}>
                                     
-                                    <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
-                                    <div key={i._id}>{i.findboardplace}</div>
-                                    <div key={i._id}>{i.findboardtitle}</div>
-                                    <div key={i._id}>{i.findboarduserid}</div>
-                                    {console.log("../image/"+i.findboardimg)}
+                                    
+                                        <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
+                                        <div className="pla" key={i._id}>{i.findboardplace}</div>
+                                        <div key={i._id}>{i.findboardtitle}</div>
+                                        <div key={i._id}>{i.findboarduserid}</div>
+                                        {console.log("../image/"+i.findboardimg)}
+                                    
+                                    </Link>
                                 </div>
-                                </Link>
-                               
                             
                             )}
                             
                         </div>
 
-                       <div>
-                           <a href="./findwrite">게시물작성</a>
-                       </div>
-
+                       
                     </div>
                     
                 }

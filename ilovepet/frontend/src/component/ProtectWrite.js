@@ -28,29 +28,27 @@ class ProtectWrite extends React.Component{
                             <input className="controllid" type="text" placeholder="아이디" name="userid" required/>
                             <input className="controllpwd" type="password" placeholder="비밀번호" name="userpsw" required/>
                             <p/>
-
-                            <label>장소</label>
-                            <input type="text" name="place"></input>
-                            <p/>
-
-                            <label>이미지</label>
-                            <input type="file" name="imgfile"></input>
-                            <p/>
-
                             <label className="title"><strong>제목</strong></label>
+                            <p/>
                             <input type="text" placeholder="제목" name="title" required/>
                             <p/>
-
-                            <label className="content"><strong>내용</strong></label>
-                            <input  type="textarea" name="content" placeholder="내용을 입력하세요."></input>
+                            <h4>장소</h4>
                             <p/>
-
+                            <input type="text" name="place"></input>
+                            <p/>
+                            <h4>이미지</h4>
+                            <p/>
+                            <input type="file" name="imgfile"></input>
+                            <p/>
+                            <label className="content"><strong>내용</strong></label>
+                            <p/>
+                            <textarea name="content" placeholder="내용을 입력하세요."></textarea>
+                            
+                            <p/>
                             <input type="submit" value="글쓰기"></input>
                             
-
-
-
                         </form>
+                        <p/>
                     </div>
                 <Footer/>
             </div>

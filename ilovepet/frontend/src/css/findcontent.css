@@ -1,0 +1,58 @@
+
+.fboard{
+    background-image: url('../component/image/boardback.jpg');
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.h4com,.comminput,.comlist,.comlog{
+    text-align: center;
+}
+
+.findboarduser{
+    background-color:  rgb(222, 184, 135);
+    margin-right: 10%;
+    margin-left: 80%;
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 40rem;
+}
+
+.findboardtitle,.findboardplace,.findboardimg,.findboardcontent2,.h4com,.comlist{
+    background-color:  rgb(222, 184, 135);
+    margin-right: 1%;
+    margin-left: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-top: 1px solid black;
+}
+.comlog{
+    margin-bottom: 1%;
+}
+
+.commlt{
+    margin-bottom: 3%;
+}
+.comli{
+    margin-bottom: 5%;
+}
+.us{
+    padding-left: 70%;
+}
+
+.edibtn:hover{
+    color: crimson;
+    font-weight: bold;
+}
+.delbtn:hover{
+    color: crimson;
+    font-weight: bold;
+}
+
+.h4com,.comlist{
+    margin-left: 20%;
+    margin-right: 20%;
+}

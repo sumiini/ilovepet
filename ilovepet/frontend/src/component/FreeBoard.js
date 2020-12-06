@@ -95,6 +95,7 @@ class FreeBoard extends React.Component{
 
                     </div>
                     
+                    
                 }
                 <Footer />
             </div>

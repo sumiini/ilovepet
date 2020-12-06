@@ -1,0 +1,46 @@
+.h1find{
+    text-align: center;
+}
+.list{
+    display: inline-block;
+    margin-left: 5%;
+    
+}
+.findlink{
+    text-decoration: none;
+    color: black;
+    float: left;
+    
+
+   
+}
+
+
+.findwrite{
+    text-align: right;
+    margin-right: 20%;
+    margin-bottom: 5%;
+}
+
+.find-list{
+    text-align: center;
+}
+
+.findlink:hover{
+    font-weight: 800;
+    color: darkred;
+}
+.pla{
+    font-weight: 600;
+}
+.fwr{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.fwr:hover{
+    color: black;
+    background-color: darksalmon;
+    border-radius: 20%;
+}
