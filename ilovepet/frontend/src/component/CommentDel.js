@@ -6,6 +6,7 @@ import Header from "../container/Header";
 import Footer from "../container/Footer";
 import '../css/controll.css';
 
+
 class CommentDel extends React.Component{
     constructor(props){
         super(props);
@@ -62,15 +63,16 @@ class CommentDel extends React.Component{
                     {commentdata.map(i=>
                         {if(i._id===cmid){
                             return(
-                                <div>
-                                    <label>[ 댓글내용 ]</label>
-                                    <p/>
-                                    <span key={i._id}>{i.commentContent} </span>
-                                    <p/>
-                                    <label>[ 작성자 ]</label>
+                                <div className="all">
+                                    
+                                    <h4 className="user">작성자</h4>
                                     <p/>
                                     <span key={i._id}>{i.commentUserid} </span>
-                                    <h3>--------------------------------------</h3>
+                                    <p/>
+                                    <h4 className="cocontent">댓글내용</h4>
+                                    <p/>
+                                    <span key={i._id}>{i.commentContent} </span>
+                                    
                                     <form method="POST" action="http://localhost:3002/Deletecomment">
                                         <input className="controllid" type="text" name="delcmid"></input>
                                         <input className="controllpwd" type="password" name="delcmpwd"></input>
@@ -83,6 +85,7 @@ class CommentDel extends React.Component{
                                         <input type="hidden" value={i.commentUserpwd} name="cmdbpwd"></input>
                                         <button type="submit">삭제하기</button>
                                     </form>
+                                    <p/>
                                 </div>
                             )
                         }}

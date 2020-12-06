@@ -43,6 +43,10 @@ class BoardDelAdmin extends React.Component{
                         {if(i._id===boardAdminId){
                             return(
                                 <div className="delcontent">
+                                    <h4 className="user">작성자</h4>
+                                    <p/>
+                                    <span key={i._id}>{i.boarduserid}</span>
+                                    <p/>
                                     <h4 className="titlename">제목</h4>
                                     <p/>
                                     <span key={i._id}>{i.boardtitle}</span>
@@ -51,10 +55,7 @@ class BoardDelAdmin extends React.Component{
                                     <p/>
                                     <span key={i._id}>{i.boardcontent}</span>
                                     <p/>
-                                    <h4 className="user">작성자</h4>
-                                    <p/>
-                                    <span key={i._id}>{i.boarduserid}</span>
-                                    <p/>
+                                    
                                     <form method="POST" action="http://localhost:3002/Deleteboard">
                                         <input type="hidden" value={i._id} name="delid"></input>
                                         

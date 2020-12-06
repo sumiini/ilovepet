@@ -9,7 +9,7 @@
     
 }
 .boardtitle,.boardcontent{
-    background-color: rgb(240, 205, 142);
+    background-color:  rgb(222, 184, 135);
     margin-right: 1%;
     margin-left: 1%;
     padding-top: 1%;
@@ -18,7 +18,7 @@
 }
 
 .boarduser{
-    background-color: rgb(240, 205, 142);
+    background-color:  rgb(222, 184, 135);
     margin-right: 10%;
     margin-left: 80%;
     padding-left: 2%;
@@ -31,6 +31,9 @@
 
 .us{
     padding-left: 83%;
+}
+.us2{
+    padding-left: 82%;
 }
 
 .btn{
@@ -81,7 +84,7 @@
 
 .commlist{
     padding-top: 1%;
-    background-color: rgb(240, 205, 142);
+    background-color:  rgb(222, 184, 135);
     margin-right: 20%;
     margin-left: 20%;
     padding-bottom: 1%;
@@ -89,7 +92,7 @@
 }
 
 .comm{
-    background-color: rgb(240, 205, 142);
+    background-color: rgb(222, 184, 135);
     margin-right: 20%;
     margin-left: 20%;
     padding-top: 0.5%;

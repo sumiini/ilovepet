@@ -6,6 +6,7 @@ import Header from "../container/Header";
 import Footer from "../container/Footer";
 import '../css/controll.css';
 
+
 class FindEditAdmin extends React.Component{
     constructor(props){
         super(props);
@@ -43,8 +44,8 @@ class FindEditAdmin extends React.Component{
                     
                         {if(i._id===findboardEditId){
                             return(
-                                <div>
-                                    <label>[ 작성자 ]</label>
+                                <div className="all">
+                                    <h4 className="user">작성자</h4>
                                     <p/>
                                     {i.findboarduserid}
                                     <p/>
@@ -55,24 +56,25 @@ class FindEditAdmin extends React.Component{
                                         <input className="controllpwd" type="password" name="editpwd"></input>
 
                                         <input type="hidden" value={i._id} name="edid"></input>
-                                        <h3>--------------------------------------</h3>
-                                        <label>[제목]</label>
+                                        <h4 className="titlename">제목</h4>
                                         <p/>
                                         <input type="text" placeholder={i.findboardtitle} name="edittitle"/>
                                         <p/>
-                                        <label>[내용]</label>
-                                        <p/>
-                                        <input type="text" placeholder={i.findboardcontent} name="editcontent"/>
-                                        <p/>
-                                        <label>[장소]</label>
+                                        <h4 className="fcontentplace">장소</h4>
                                         <p/>
                                         <input type="text" placeholder={i.findboardplace} name="editplace"/>
                                         <p/>
-                                        <label>[이미지]</label>
+                                        <h4 className="fcontentimg">이미지</h4>
                                         <p/>
                                         <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
                                         
                                         <p/>
+                                        <h4 className="contentname">내용</h4>
+                                        <p/>
+                                        <input type="text" placeholder={i.findboardcontent} name="editcontent"/>
+                                        <p/>
+                                        
+                                        
                                         <input type="hidden" value={i.findboardtitle} name="beforetitle"/>
                                         <input type="hidden" value={i.findboardcontent} name="beforecontent"/>
                                         <input type="hidden" value={i.findboardplace} name="beforeplace"/>
@@ -82,6 +84,7 @@ class FindEditAdmin extends React.Component{
                                         <input type="hidden" value={i.findboarduserpsw} name="bdpwd"></input>
                                         <button type="submit">수정하기</button>
                                     </form>
+                                    <p/>
                                 </div>
                             )
                         }}

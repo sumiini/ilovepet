@@ -89,12 +89,9 @@ app.post('/Signin',function(req,res,next){
     us.forEach(cnt=>{
       cnt2+=1;
       if(us[cnt2].userid===req.body.signinID && us[cnt2].userpassword===req.body.signinPWD){
-        
         res.redirect('http://localhost:3000/')
       }
-      else{
-        res.send('<script type="text/javascript"> alert("존재하지 않는 회원입니다.");</script>');
-      }
+      
       
     });
   
@@ -126,9 +123,7 @@ app.post('/Createboard',function(req,res,next){
           res.redirect('http://localhost:3000/freeboard');
         })
       }
-      else{
-        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
-      }
+     
       
       
       
@@ -164,9 +159,7 @@ app.post('/Createfindboard',function(req,res,next){
           res.redirect('http://localhost:3000/find');
         })
       }
-      else{
-        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
-      }
+      
       
     });
   
@@ -200,9 +193,7 @@ app.post('/Createprotectboard',function(req,res,next){
           res.redirect('http://localhost:3000/protect');
         })
       }
-      else{
-        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
-      }
+     
       
     });
     
@@ -298,9 +289,7 @@ app.post('/Deleteboard',function(req,res,next){
 
 
   }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
-  }
+  
   
 });
 
@@ -321,9 +310,7 @@ app.post('/Deletecomment',function(req,res,next){
 
 
   }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
-  }
+  
   
 });
 
@@ -343,9 +330,6 @@ app.post('/Deletefindcomment',function(req,res,next){
     });
 
 
-  }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -367,9 +351,6 @@ app.post('/Deleteprotectcomment',function(req,res,next){
 
 
   }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
-  }
   
 });
 
@@ -389,9 +370,6 @@ app.post('/Deletefindboard',function(req,res,next){
     });
 
 
-  }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -413,9 +391,6 @@ app.post('/Deleteprotectboard',function(req,res,next){
 
 
   }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
-  }
   
 });
 
@@ -430,9 +405,6 @@ app.post('/Editboard',function(req,res,next){
       res.redirect('http://localhost:3000/freeboard');
     });
 
-  }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -449,10 +421,6 @@ app.post('/Editfindboard',function(req,res,next){
     });
 
   }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
-  }
-  
 });
 
 //보호중이에요 게시글 수정
@@ -466,9 +434,6 @@ app.post('/Editprotectboard',function(req,res,next){
       res.redirect('http://localhost:3000/protect');
     });
 
-  }
-  else{
-    res.send('<script type="text/javascript"> alert("권한이 없습니다.");</script>');
   }
   
 });
@@ -494,9 +459,6 @@ app.post('/Addcomment',function(req,res,next){
           console.log("commentkey"+req.body.commentkey);
           res.redirect('http://localhost:3000/boardcontent'+req.body.commentkey);
         })
-      }
-      else{
-        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
       }
       
     });
@@ -527,9 +489,6 @@ app.post('/Addfindcomment',function(req,res,next){
           res.redirect('http://localhost:3000/findcontent'+req.body.commentkey);
         })
       }
-      else{
-        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
-      }
       
     });
   
@@ -558,9 +517,6 @@ app.post('/Addprotectcomment',function(req,res,next){
           console.log("commentkey"+req.body.commentkey);
           res.redirect('http://localhost:3000/protectcontent'+req.body.commentkey);
         })
-      }
-      else{
-        res.send('<script type="text/javascript"> alert("회원가입이 필요합니다.");</script>');
       }
       
     });

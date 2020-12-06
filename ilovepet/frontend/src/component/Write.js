@@ -34,11 +34,13 @@ class Write extends React.Component{
                             <p/>
 
                             <label className="title"><strong>제목</strong></label>
+                            <p/>
                             <input type="text" placeholder="제목" name="title" required/>
                             <p/>
 
                             <label className="content"><strong>내용</strong></label>
-                            <textarea   name="content" placeholder="내용을 입력하세요."></textarea>
+                            <p/>
+                            <textarea  name="content" placeholder="내용을 입력하세요."></textarea>
                             <p/>
 
                             <input type="submit" value="글쓰기"></input>
@@ -47,6 +49,8 @@ class Write extends React.Component{
 
 
                         </form>
+                        <p/>
+
                     </div>
                 <Footer/>
             </div>
