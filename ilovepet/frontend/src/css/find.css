@@ -11,8 +11,9 @@
     color: black;
     float: left;
     
-
-   
+}
+.findmaster{
+    padding-bottom: 10%;
 }
 
 
@@ -22,9 +23,6 @@
     margin-bottom: 5%;
 }
 
-.find-list{
-    text-align: center;
-}
 
 .findlink:hover{
     font-weight: 800;

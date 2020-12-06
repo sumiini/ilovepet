@@ -42,8 +42,8 @@ class ProtectEditAdmin extends React.Component{
                     
                         {if(i._id===protectboardEditId){
                             return(
-                                <div>
-                                    <label>[ 작성자 ]</label>
+                                <div className="all">
+                                    <h4>작성자</h4>
                                     <p/>
                                     <span key={i._id}>{i.protectboarduserid}</span>
                                     <form method="POST" action="http://localhost:3002/Editprotectboard">
@@ -52,22 +52,22 @@ class ProtectEditAdmin extends React.Component{
                                         <input className="controllpwd" type="password" name="editpwd"></input>
                                         
                                         <input type="hidden" value={i._id} name="edid"></input>
-                                        <h3>--------------------------------------</h3>
-                                        <label>[제목]</label>
+                                        <h4 className="titlename">제목</h4>
                                         <p/>
                                         <input type="text" placeholder={i.protectboardtitle} name="edittitle"/>
                                         <p/>
-                                        <label>[내용]</label>
-                                        <p/>
-                                        <input type="text" placeholder={i.protectboardcontent} name="editcontent"/>
-                                        <p/>
-                                        <label>[장소]</label>
+                                        <h4 className="fcontentplace">장소</h4>
                                         <p/>
                                         <input type="text" placeholder={i.protectboardplace} name="editplace"/>
                                         <p/>
-                                        <label>[이미지]</label>
+                                        <h4 className="fcontentimg">이미지</h4>
                                         <p/>
                                         <img width="200px" key={i._id} src={"/images/"+i.protectboardimg}></img>
+                                        <h4 className="contentname">내용</h4>
+                                        <p/>
+                                        <textarea className="txtarea" type="text" placeholder={i.protectboardcontent} name="editcontent"/>
+                                        <p/>
+                                        
                                         
                                         <p/>
                                         <input type="hidden" value={i.protectboardtitle} name="beforetitle"/>
@@ -79,6 +79,7 @@ class ProtectEditAdmin extends React.Component{
                                         <input type="hidden" value={i.protectboarduserpsw} name="bdpwd"></input>
                                         <button type="submit">수정하기</button>
                                     </form>
+                                    <p/>
                                 </div>
                             )
                         }}

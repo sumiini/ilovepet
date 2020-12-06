@@ -1,4 +1,6 @@
-
+.boardcontent{
+    background-color: white;
+}
 .fboard{
     background-image: url('../component/image/boardback.jpg');
     margin-right: 20%;
@@ -55,4 +57,7 @@
 .h4com,.comlist{
     margin-left: 20%;
     margin-right: 20%;
+}
+.comli{
+    padding-bottom: 5%;
 }

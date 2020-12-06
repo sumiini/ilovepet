@@ -59,7 +59,7 @@ class BoardEditAdmin extends React.Component{
                                         <input type="text" placeholder={i.boardtitle} name="edittitle"/>
                                         <p/>
                                         <h4 className="contentname">내용</h4>
-                                        <input type="text" placeholder={i.boardcontent} name="editcontent"/>
+                                        <textarea className="txtarea" type="text" placeholder={i.boardcontent} name="editcontent"/>
                                         <p/>
                                         <input type="hidden" value={i.boardtitle} name="beforetitle"/>
                                         <input type="hidden" value={i.boardcontent} name="beforecontent"/>

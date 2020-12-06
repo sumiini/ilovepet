@@ -39,42 +39,40 @@ class ProtectDelAdmin extends React.Component{
                     {adminboards.map(i=>
                         {if(i._id===boardAdminId){
                             return(
-                                <div>
-                                    <label>[ 제목 ]</label>
+                                <div className="con">
+                                <h4 className="user">작성자</h4>
+                                   
+                                   <span key={i._id}>{i.protectboarduserid}</span>
+                                   <p/>
+                                    <h4 className="titlename">제목</h4>
                                     
                                     <span key={i._id}>{i.protectboardtitle}</span>
                                     <p/>
-                                    <h3>--------------------------------------</h3>
-                                    <label>[ 내용 ]</label>
-                                   
-                                    <span key={i._id}>{i.protectboardcontent}</span>
-                                    <p/>
-                                    <h3>--------------------------------------</h3>
-                                    <label>[ 작성자 ]</label>
-                                   
-                                    <span key={i._id}>{i.protectboarduserid}</span>
-                                    <p/>
-                                    <label>[ 장소 ]</label>
+                                    <h4 className="fcontentplace">장소</h4>
                                     
                                     <span key={i._id}>{i.protectboardplace}</span>
                                     <p/>
-                                    <label>[ 이미지 ]</label>
+                                    <h4 className="fcontentimg">이미지</h4>
                                     
                                     <img width="200px" key={i._id} src={"/images/"+i.protectboardimg}></img>
                                     <p/>
-                                    <h3>--------------------------------------</h3>
+                                    <h4 className="contentname">내용</h4>
+                                   
+                                    <span key={i._id}>{i.protectboardcontent}</span>
+                                    
+                                    
+                                    <p/>
                                     <form method="POST" action="http://localhost:3002/Deleteprotectboard">
+                                        <input className="controllid" type="text" name="adminid"></input>
+                                        <input className="controllpwd" type="password" name="adminpwd"></input>
+
                                         <input type="hidden" value={i._id} name="delid"></input>
-                                        <labe>id</labe>
-                                        <input type="text" name="adminid"></input>
-                                        <p/>
-                                        <label>password</label>
-                                        <input type="password" name="adminpwd"></input>
-                                        <p/>
+                                        
                                         <input type="hidden" value={i.protectboarduserid} name="bduserid"/>
                                         <input type="hidden" value={i.protectboarduserpsw} name="bdpwd"></input>
                                         <button type="submit">삭제하기</button>
                                     </form>
+                                    <p/>
                                 </div>
                             )
                         }}

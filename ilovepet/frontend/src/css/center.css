@@ -22,12 +22,20 @@
 
 .protect-btn{
     margin-bottom: 8rem;
+    
 }
 
 .write-action{
     text-align: center;
+    padding-bottom: 5%;
 }
 
 .freeboardwriteID,.freeboardwritePWD{
     display: none;
+}
+.txtarea{
+    resize: none;
+    height: 230px;
+    width: 50%;
+    
 }

@@ -57,42 +57,42 @@ class FindContent extends React.Component{
                 <Header />
                 <div className="findboardcontent">
                     <div className="fboard">
-                    {contentfindboards.map(i=>
+                        {contentfindboards.map(i=>
                     
-                    {if(i._id===findboardId){
+                            {if(i._id===findboardId){
                         
-                        return(
-                            <div className="findboardcontent">
-                                <h4 className="findboardtitle">제목</h4>
-                                <p/>
-                                <div className="findtt" key={i._id}>{i.findboardtitle}</div>
-                                <h4 className="findboarduser">작성자</h4>
-                                <p/>
-                                <div className="us" key={i._id}>{i.findboarduserid}</div>
-                                <p/>
-                                <h4 className="findboardplace">장소</h4>
-                                <p/>
-                                <div key={i._id}>{i.findboardplace}</div>
-                                <h4 className="findboardimg">사진</h4>
-                                <p/>
-                                <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
-                                <p/>
+                                return(
+                                    <div className="findboardcontent">
+                                        <h4 className="findboardtitle">제목</h4>
+                                        <p/>
+                                        <div className="findtt" key={i._id}>{i.findboardtitle}</div>
+                                        <h4 className="findboarduser">작성자</h4>
+                                        <p/>
+                                        <div className="us" key={i._id}>{i.findboarduserid}</div>
+                                        <p/>
+                                        <h4 className="findboardplace">장소</h4>
+                                        <p/>
+                                        <div key={i._id}>{i.findboardplace}</div>
+                                        <h4 className="findboardimg">사진</h4>
+                                        <p/>
+                                        <img width="200px" key={i._id} src={"/images/"+i.findboardimg}></img>
+                                        <p/>
                                 
-                                <h4 className="findboardcontent2">내용</h4>
-                                <p/>
-                                <div key={i._id}>{i.findboardcontent}</div>
+                                        <h4 className="findboardcontent2">내용</h4>
+                                        <p/>
+                                        <div key={i._id}>{i.findboardcontent}</div>
                                 
-                                <p/>
-                                <div className="findbtn"><Link className="edibtn" to={`/findeditadmin${i._id}`}>수정</Link><Link className="delbtn" to={`/finddeladmin${i._id}`}>삭제</Link></div>
+                                        <p/>
+                                        <div className="findbtn"><Link className="edibtn" to={`/findeditadmin${i._id}`}>수정</Link><Link className="delbtn" to={`/finddeladmin${i._id}`}>삭제</Link></div>
                                
-                               <br/>
+                                    <br/>
                                
                                 
-                            </div>
-                        )    
-                    }}
+                                    </div>
+                                )    
+                            }}
                     
-                )}
+                        )}
 
                     </div>
                     
